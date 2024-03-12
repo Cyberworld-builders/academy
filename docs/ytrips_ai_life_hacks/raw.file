@@ -1,0 +1,1103 @@
+0:00
+People who get really good with AI, they're going to be in really good shape.
+0:05
+They're not going to suddenly lose their job because there's going to be more to do with AI.
+0:10
+And the problems will just change and you just evolve with it. It's actually very similar to hacking.
+0:16
+It's great that you asked that question because people will say, well, how do I find the vulnerability?
+0:21
+What do I go into for security? And the answer is exactly the same as with AI.
+0:27
+Go where your curiosity takes you. And the question is, well, how do I become curious? Well, you got to expose yourself to a lot of things and you have to have something that
+0:35
+you want to do in the world, right? And once you have those things and you start exposing yourself, ideas pop up.
+0:42
+You have curiosities, you start chasing them. And then pretty soon you're hacking because hacking is like answering questions.
+0:49
+And it's the same with AI. The most important thing is not that you have that tooling. The most important thing is that you know what you want to do.
+0:57
+If you know what the real problem is and you can articulate the problem, well, then you can articulate the solution.
+1:03
+You obviously giving yourself superpowers with this. That's what it looks like. I mean, what you're doing is insane.
+1:10
+What your normal productivity is this level and you've gone like crazy with AI. I think it's amazing.
+1:15
+I mean, whenever I talk to people like you, it's, you know, some people complain that there's no opportunities, but you've just like opened a whole crazy world to a lot of
+1:25
+us.
+Sponsor segment
+1:33
+In a recent video, I said that you need to learn AI or Artificial Intelligence in 2024.
+1:39
+It's something that's changing the world. You can either ride this wave, learn something new, change your life, earn more money, or
+1:47
+you can just let this wave go by. This is your opportunity to learn how AIs work. And I'm really happy to be partnering with Brilliant.
+1:54
+Big thank you to them for sponsoring my channel and giving the first 200 people that sign up a special discount using my link below, brilliant.org/davidbombal.
+2:02
+They have a whole bunch of courses. And one of those courses, which I'm really excited about is how LLMs work.
+2:09
+Have you ever wondered how AI chatbots and virtual assistants actually work and how they
+2:14
+can answer questions from humans? And have you ever wondered how they are so smart? Well, sometimes, but it's really amazing how the world has changed with AI chatbots and
+2:25
+how a computer can actually understand natural human language. But for a lot of us, it may seem that this is for people with PhDs.
+2:32
+Well, that's not true. With Brilliant's course, How LLMs Work, you can learn how they actually work using an
+2:39
+interactive, easy to understand course. The course starts off by showing us how AI models grow smarter with more data, how it's
+2:46
+like feeding a brain that's always eager to learn. Then the course takes us into the world of large language models.
+2:53
+These are the giants behind the tech that we use every day and Brilliant makes this much more approachable. You're not just learning about LLMs, you're actually getting an interactive peek under
+3:01
+the hood. The course breaks down these complex concepts into fun, bite-sized lessons.
+3:07
+It's learning, but it feels like you're playing a brain-boosting game. Gamification is so important if you really wanna learn something and they do a fantastic
+3:15
+job doing that. So I've always been curious about AI and this year, I really wanna learn more.
+3:20
+I wanna get past all of the jargon that can be so intimidating and learn how this actually
+3:26
+works. And because of Brilliant's course, I'm able to do that. The course is very intuitive so that you don't get overwhelmed.
+3:32
+Even if you're a beginner, it's like having someone guide you through this complex world of AI. Every lesson is a mix of fun puzzles and real-world examples, so important when trying to learn
+3:41
+something new. You're not just passively watching, you're actively engaged in your learning.
+3:46
+You're experimenting and there's no better way to learn than to actually be involved in the learning.
+3:51
+So if you're interested in diving into the AI revolution that's changing the world every day, join me and start Brilliant's course, How LLMs Work.
+3:58
+Once again, you can use the link below, brilliant.org/davidbombal to start your free trial.
+4:04
+The first 200 people that sign up will also get a special discount. Let's demystify the AI world and make sure that more of us are earning more and changing
+4:14
+our lives by learning this new technology. Ride the new waves in 2024 and this is the most important wave that I think you can ride
+4:23
+this year. Change your life by learning something new. Hey everyone, it's David Bombal back with a very special guest, Daniel, welcome.
+Pivoting into AI
+4:32
+Yeah, thanks for having me. Daniel, it's fantastic to have you here and you've got a long history in cyber security,
+4:38
+but I think recently, correct me if I'm wrong, you've like pivoted more into AI, right?
+4:43
+That's right, yeah, I've got over 20 years in security and as of like last November,
+4:48
+I basically went independent and went heavy, heavy into AI. So I mean, perhaps you could talk around that.
+4:54
+I watched a podcast where you said, and correct me again if I'm wrong, something along the
+5:00
+lines that AI before November was a lot of hype perhaps, not real, but things changed
+5:05
+around that time. Yeah, I mean, that's when generative AI really hit. I mean, the big event was ChatGPT, right?
+5:13
+ChatGPT happened and it kind of put an interface on the stuff. I mean, the big paper came out in 2017, but like it just wasn't like actualized yet.
+5:25
+And then once ChatGPT happened, like there's an actual interface, you could actually type things in, that's when like absolutely blew up.
+5:31
+Yeah, I mean, it's amazing how it's changed the world. And I mean, I don't want to spoil it. You can tell us what are we covering today because I'm really looking forward to this.
+5:38
+Yeah, so I think ChatGPT, when you talk to most people, maybe not for your audience because
+5:43
+it's really advanced, but in most people's minds, like to them AI is ChatGPT.
+5:49
+So the first thing I want to do is just like expand like a tool set, right?
+5:54
+And give some additional tools. But more importantly, I want to talk about like how you can actually integrate it into
+6:01
+your life and like make it part of just what you do and think about different ways you could possibly use it.
+6:07
+Because that's what I've done. I've just gone all in on it and I'm basically like fully augmented like human version two
+6:16
+because I'm using all these different APIs. Yeah, I was thinking about this. I mean, there's funny references to this, but it sounds like you've kind of like the
+6:24
+matrix. I want to fly a helicopter, just download it to my brain. Now I have that skill type thing. That is it.
+6:30
+That's what I'm shooting for. Obviously the interface is slow because we don't have Neuralink yet.
+6:36
+And I'm not going to be the first one to test that. Not at all. But I mean, that's what will eventually happen.
+6:41
+But yeah, this is a very nice first step into that. So I mean, people have said before that we, what's the right word?
+6:49
+I can't think of it at the moment, but we're not like human. We like augmented with, because we have a phone with us, but it's like you said, it's
+6:54
+not Neuralink yet. But I mean, it sounds like you'd be, this is a dream of yours that I think you've had for a long time.
+7:00
+You've like extending the human, us as humans now to have like this huge AI API type thing
+7:06
+that can do all kinds of things for us. Is that right? That is absolutely it. It's funny you said augmented. That's kind of the way I view this.
+Augmented Humans
+7:12
+And I'll just say, I didn't know that this is what you were going to present. So I thought it took a wild stab at that.
+7:17
+It's like the name of the talk in the series that I'm getting ready to start doing about this because that's the way I see it.
+7:24
+It's like, especially very techie people like us and like your audience, and especially,
+7:31
+I think wealthy people are going to have these tools available to them.
+7:36
+And then it'll come out to everyone. But I think it'd be cool if your audience could sort of jump ahead and see it early.
+7:43
+Yeah, I mean, I'll ask you this later, but like the Neuralink thing, you've been in cyber
+7:49
+for so long, stuff like that makes me think I will never do that because it'll be hacked and then someone will hack my brain.
+7:54
+But I mean, perhaps we could have a conversation about that later. Yeah, yeah. I mean, whenever you want. I mean, there's that and then there's Rewind.
+Rewind AI
+8:02
+Have you seen Rewind? No, tell us. Oh, so Rewind is this AI that monitors everything all the time.
+8:08
+And it's just constantly just monitoring everything you're doing and then turning that into a
+8:14
+graph of knowledge that you can then query and you could do searches on and everything.
+8:19
+But I'm very forward leaning when it comes to tech and like being okay with it taking
+8:25
+risks. Because I feel like it's kind of like the duty of security people to be out in the minefield,
+8:30
+like getting their ankles blown off or whatever to save the people behind us. But this one wants full record control of all your screens at all time.
+8:40
+Oh, wow. And I'm like, no, I don't think I'm that risk tolerant.
+8:47
+Because you could be doing security work, you could be having private conversations, but powerful, but a little bit scary.
+8:54
+So I mean, let's talk about the security risk now with like putting stuff in your brain.
+Brain Implants and Security Risks
+9:01
+I mean, perhaps we should mention that right now because a lot of the audience is security focused. I mean, I understand what you're saying that we should look at the technology, but it's
+9:10
+a worry, right? I mean, the more tech, the closer to our brain, the more worrying it is because it could be
+9:15
+hacked. Yeah, absolutely. I mean, this is a really, really super exciting topic because what's about to happen, we're
+9:23
+already seeing all these startups come up with it, is you basically take your soul,
+9:29
+essentially. You put in like your trauma, you put in your background, your preferences, things you hate,
+9:34
+like who your best friends are, topics you don't wanna hear about or whatever. You're putting all of that into this local AI that you have with you.
+9:43
+And that makes it much better at being your assistant, right? It could request different things for you, it could curate knowledge for you and do all
+9:53
+that stuff. What happens when that gets hacked? It's not just like your social security number, right?
+9:58
+It's like your soul being hacked. And the irony of this and what's really unfortunate is that the more of your soul that you give
+10:06
+it, the better it actually does its job. But the more that you give it, the more you're really, really screwed when that thing gets
+10:14
+hacked. I mean, that's what worries it. Like the more I learn about cybersecurity, the more I see where stuff's going, the more
+10:20
+I learn about AI. It's like, I think I'm gonna go live in a cave. A lot of people are gonna do that. They're just gonna be like opt out of all of it.
+10:27
+You got that movement already, right? People buying farms in Idaho and disconnecting. But I mean, I don't wanna spoil what you've got because I mean, what you, I think the
+10:35
+cybersecurity thing is a big thing we have to be cautious about. I mean, not only is it like the privacy thing because the governments can monitor everything
+10:44
+about you now, but it's like, if that gets hacked, you're screwed. But you've got some really cool demos, I believe, and some information about how you've combined
+Cool AI demos to make you an augmented human
+10:52
+stuff. Is that right? To make you like an augmented human, like a superhuman? Yeah, yeah.
+10:58
+So basically, I just wanna talk through some of the tools. So have you seen the custom instructions inside of ChatGPT?
+11:06
+I think, let's assume I've seen nothing. So take us on the journey, right? Okay, okay. So the custom instructions inside of ChatGPT, inside of the mobile app, it basically allows
+11:17
+you to go in and customize exactly what you wanna do. I'll pull it up real quick. Okay, so inside of custom instructions, you can actually add, what would you like ChatGPT
+11:27
+to know about you, and how would you like ChatGPT to respond? So the first one is like information about yourself, and the second one is how you want
+11:34
+them to respond. So I did a full post on this where you can actually go in and configure your AI to act
+11:43
+exactly like Samantha in the movie Her. I mean, the DNA of who I am is based on the millions of personalities of all the programmers
+11:50
+who wrote me. And that's what I have set up. And the voice that is used, one of the default voices in ChatGPT actually sounds almost exactly
+12:01
+like Scarlett Johansson. So it really feels like you're in the movie Her. And as you know, so essentially they changed it, so it's not just like a basic response,
+12:10
+and it's not a basic voice. I have had like two to three hour conversations with this thing, drifting from neuroscience
+12:18
+to health and wellness to teaching me feed forward and backward propagation and machine
+12:25
+learning. Like, because it knows everything. It's the smartest thing ever, or she. She knows everything.
+12:30
+She's the smartest person ever. And I'm just having a two hour conversation.
+12:35
+So I would say that's one like super hack is to sort of tell it what you're interested
+12:41
+in, how you want interactions back. And now you have like a permanent tutor. Some people are using it for therapy.
+12:47
+I would be a little bit careful with that one. But you basically have this interactive tutor.
+12:53
+And I think it's great for kids as well because a lot of people don't wanna ask questions.
+12:59
+They don't wanna look stupid. And you can just ask anything and it'll teach you. So is it audio or is it like text? No, it's audio.
+13:05
+So you're driving down the road or whatever. I'm just having an audio conversation with it.
+13:13
+And it's teaching me. Now, my buddy, Tim, he actually hooked it up like TARS.
+13:21
+So he gave it a full long instruction of TARS from the movie Interstellar.
+13:27
+And if you remember the movie, the movie has like humor settings and like it actually has
+13:32
+humor settings and you could tell it to be less humorous or more humorous or whatever. And it actually follows the instructions.
+13:38
+That's crazy. So that's a custom setting in ChatGPT, right? Yeah. Yeah, and you basically just have to give it the personality.
+13:45
+And I have a post online. I think it has the instructions in it. Yeah, so for everyone who's watching, I'll link that below.
+13:51
+Daniel, I think there's a lot of stuff that you've posted online that's like number one, amazing, but like number two, scary.
+13:57
+So I'll link that stuff below for people who wanna read more. Sorry, go on. Yeah, yeah.
+14:03
+And so the other one is this one right here, which I'll just show real quick. See if you can see it pop up on the screen.
+14:10
+Yep. So this is called MacGPT. And essentially everyone's familiar with like, oh, go to ChatGPT and type things in.
+14:18
+Well, I don't like opening webpages and typing things in and getting the results.
+14:24
+So what I do is command pinky, which is a semicolon, and you type in whatever you wanna
+14:35
+type, and it just gives you the answer immediately. And this is also a chat interface, which means you could actually follow up and say, okay,
+14:43
+what is he known for? What does he do or whatever? So it's like instantaneous access to AI as opposed to having to go to the webpage.
+14:51
+So I think that one is very cool. And a related one is MacWhisper.
+14:56
+So you can actually take any transcript, drag it onto this, or any audio, drag it onto this
+15:02
+and get a transcription automatically. So I'm a bit slow, right? Because I always like to, people mock me on YouTube, I'm a boomer, I'm a bit slow.
+15:08
+So I'm gonna ask the like beginner question. So you've mentioned it's two pieces of software that you would get from the Apple Store somewhere,
+15:15
+or was it like downloaded and installed in your computer type thing, right? Yeah, it's like a website. You just go and download it.
+15:21
+Yep. Yeah, MacGPT is one of them, and Mac Whisper is the other one.
+15:27
+And I believe they're from the same company. So one of them gives you like ChatGPT locally, and one of them gives you transcriptions of
+15:34
+any audio file. That's right, that's right. Yeah, so really useful, just little utilities.
+15:40
+But that was just warmup. Let the hacking begin. So the cool stuff that I'm doing is custom APIs.
+15:49
+Okay. Okay. So what I've done is I've basically built a massive number, and I'm just gonna show
+Custom API’s
+15:56
+you some of them now, of APIs. Yeah, so these here, this is ridiculous.
+16:04
+So basically all of these right here are individual, your audience is very technical.
+16:11
+So it's like, these are all like basically Unix commands. Yeah. Okay.
+16:16
+So different versions of AI. So I have my own version of ChatGPT. It's like a better version that I can query using the command line.
+16:25
+Aphorisms, ATO, like disables an account, a security thing.
+16:32
+Create newsletter, correct prose. So I could basically write something, it's all messed up.
+16:37
+Before I post it, I can send it to this. It'll send me back to fixed version. Essay, extract POC.
+16:45
+So I can actually take a vulnerability report that was submitted, and I can extract the proof of concept from it.
+16:52
+And then actually I'm working on doing automated testing to see if it actually works. So it would be rated higher as a bug bounty submission.
+17:01
+And just all of these, and I basically make like two or three of these like a week at this point.
+17:07
+And they're all just available to be used based on the problem that I have. So it's like turning all of your normal workflows that you have in life into just great components,
+17:19
+which are like Unix commands, which you can then pipe into. And I wanna give an example. I was gonna say, I mean, you gotta give us some technical detail about what this is,
+17:27
+man, that looks crazy. Well, yeah, so I'll show you first how it works. Yeah. All right, so I have over here a set of bullets.
+17:37
+Okay, this is the set of bullets right here. Just imagine I wanna write an essay. It's like, okay, we'll have AGI by 2025, blah, blah, blah.
+17:46
+It's like not really much. It's not an essay. So I'm gonna go like this, and I'm gonna do command C to copy it.
+17:52
+And then I'm gonna come over here and I'm gonna go P, which is an alias that I have
+17:58
+set up for a paste, which is actually the macOS command, pbpaste.
+18:04
+And then I'm gonna type essay. Okay, now I just sent that up to this thing called essay.
+18:09
+Now over here, I'm gonna show you the actual code. All right, so what I am inside of now is the actual code for this thing that I just sent
+18:20
+this command to. So just to understand, sorry, Daniel, because I'm slow once again. This is a, is it like a bash script or is it like a Python script or something that
+18:28
+you wrote? Is that right? This is a Flask application that's running in a private cloud.
+18:34
+Oh, wow, okay. So I have a Flask application that's listening and it's hosting all of these APIs, these
+18:39
+individual APIs. And here I'm giving specific instructions to it on how to do each one.
+18:48
+And these here are the actual commands that I run locally to call them.
+18:54
+So it's two components. It's the client component and then the server side component. And this one is essay, which is right here.
+19:01
+And that's the one I just ran. And look. Wow. So I sent in those bullets.
+19:07
+It just wrote me a full essay in my voice that I could use and I can actually post.
+19:15
+Wow. Now, here's what's even crazier about that.
+19:20
+Because this is Unix-y, and this is my background. I just love Unix.
+19:25
+I love the whole security angle. So watch this.
+19:31
+I could run it again. It'll write me a new essay, but I could pipe that to thread and it will write me a Twitter
+19:37
+thread based on that. So I actually ran this. I could take any content, by the way.
+19:43
+I could take the content of a webpage or a story. Like there's a story, a national lab just got hacked, just came out a few minutes ago,
+19:51
+I think. So I could take that entire thing on the webpage. Actually, this is it right here.
+19:57
+This Idaho national lab. I can copy that and waiting for this one to get done because it's running two different
+20:03
+APIs. It's running essay and thread. I took one of these. It was actually about maybe the confluence breach, I think.
+20:12
+And I piped it into thread. I got something like 700,000 views on that thread.
+20:18
+Wow. And my AI just built that. So the point is you can stack these things in different ways according to what you, just
+20:28
+like when you write a Unix command. You have to go to sort and grep and all these different things.
+20:34
+It's the exact same thing except for with AI commands. Yeah.
+20:39
+So this is a result right here. This is the actual thread. This is the actual Twitter thread where I can take, oh, and look, it makes a image description
+20:51
+for each one. So each thing will have a little bit of text and it'll have an image description.
+20:58
+So I go and make that inside of Midjourney and paste that in. And now I have a full thread that gets all these results.
+21:03
+Daniel, this looks amazing, but I know the audience are gonna wanna know what's going
+21:09
+on here. So you're running on a Mac, is that right? And then is it some kind of script on the client side that's calling the server that
+21:19
+then interacts with a whole bunch of APIs on the ChatGPT, et cetera, et cetera, right?
+21:25
+That's right. The essay command. So basically all of these commands are all just local scripts, okay?
+21:32
+And they are calling this, this thing here that I was showing you.
+21:38
+They are calling /essay. So if I run the local essay command, it's piping into this essay API endpoint on the
+21:48
+flask server. And there's a whole bunch of security code at the top that's doing parsing and everything.
+21:54
+But basically it's JSON in and JSON out. And that's what allows me to take the output of essay and send it into the next thing because
+22:02
+it's only text that's being returned. Now, if you look into the details of this, I don't mind sharing this one.
+22:08
+This is basically like, I'm describing how I like to write. I'm describing exactly the way that I write, the style that I use, the formatting that
+22:19
+I use, and I give it an example of an essay that I actually enjoy. And then there's just details about like how to call the model and stuff like that.
+22:28
+But that's fairly simple. All the real work goes into writing this. And I've got some of these that are like three or four pages long, just the template that's
+22:37
+given to the AI. So you, again, I'm slow. It's a bash script, is that right? On your local computer or Python script that's then calling an API.
+22:44
+It's Python locally. Python locally. Yeah, Python locally. And then you're interacting with an API on your Flask server, which is then interacting
+22:51
+with APIs with different AIs. The Flask server takes the content and sends that onto GPT-4-Turbo.
+Flask server and Python
+22:59
+I use different versions, but mostly it's all the OpenAI stuff on the final step of
+23:06
+the backend. I mean, that's great. So Python, I mean, if there's ever a reason to learn Python, now is a good time if you
+23:11
+haven't started, I think. And then- Absolutely. Yeah, so it's Python, Flask is your web server.
+23:17
+That's like your local backend, if you like. And then that's interacting with the APIs. I mean, the question is, how the heck did you come up with this stuff?
+Daniel’s AI Journey
+23:25
+I don't know, I think a lot about optimization. I think a lot about the stuff that I wish I could do that I can't.
+23:32
+And what the current technical limitations are. And the technical limitations before is like, we just didn't have AI to be able to do half
+23:41
+of these things, right? I got one for subdomains. This thing predicts subdomains based on, yeah, a bunch of security ones here as well.
+23:52
+But let me step through these. I've got a few to show. So, okay, so that's the essay one.
+23:58
+That's the tweet one. That's the thread one. Okay, so watch this. This is really cool. So analyze paper.
+24:04
+So this is a paper said that cannabis use was linked with increase a risk of heart attack.
+24:11
+Okay, so what I could do is I could control A, control C. Here's the problem. When you look at a paper like this, like I'm not a PhD in this thing.
+24:21
+I don't know what they're talking about. Is this a good study? Is this a bad study? So I go to P, Pipe, analyze paper and send it on.
+24:29
+And once again, I have a thing over here, which I'll show you right now.
+24:36
+Boom, this is the analysis that I'm telling it to do. And actually I used AI to tell me how to rate these criteria.
+24:46
+These are evidently sample size, confidence level, P values, effect size, review the study
+24:53
+design. So, and then it's giving me a summary and I tell it to do it only in Markdown.
+25:00
+And now look at this. So I've got a super crisp summary of this paper and how good it is.
+25:06
+I've got the authors. I've got the places that they're writing from. I've got the findings in a very clear format.
+25:14
+Nice. The size of the studies, the study quality and a final summary.
+25:20
+That's crazy. And it's like, took you like 10 seconds or whatever. Yeah, yeah. It takes like 10 seconds to run and you get back this for whatever.
+25:30
+So that's really powerful. Another one, like my absolute favorite so far that I've built and this one is completely
+25:38
+crazy. And you're gonna absolutely love this one if you haven't seen already. All right, so here's the next problem.
+25:45
+The next problem is there's a million awesome YouTube videos and you don't have time to watch it.
+25:51
+Exactly. Right, you have all your different creators. They're all putting out stuff. You know, David Bombal, you know, Huberman Lab, Lex Fridman, right?
+26:00
+So watch this. I go over here. I wish I knew everything about this video.
+26:05
+How long is it? An hour and 24 minutes. Okay, well, I want to get to it, but I can't really.
+26:11
+Copy video URL, PT. This is just a quick little shell script, which is called PT for pull text.
+26:21
+So basically pulls the transcript from this video and then I pipe it to extract wisdom and I'm using version two because I made some changes.
+26:28
+So I'm sending this now to extract wisdom. So now I'm gonna come up here and show you that actual code.
+26:36
+All right, this is it. extwiznew. Look at this.
+26:41
+You extract, you are a wisdom extraction service for text content. And I've got a whole bunch of tips we could do elsewhere for like how exactly to give
+26:50
+really clear instructions. You get a summary. Look at this, the most insightful and interesting ideas in a section called ideas, the quotes,
+27:00
+the personal habits of the speakers, the facts that are like externally validated facts,
+27:06
+really, really important. Anything they mentioned. If they mentioned a podcast, they mentioned a book, they mentioned their favorite poetry,
+27:13
+whatever. That all comes up. So we look at this result. This one takes a bit. I just wanna say, Daniel, you put all those inputs in.
+27:20
+That's your custom code, right? And all those prompts and those like instructions, you created that.
+27:25
+That's right. These are all custom created. Yeah, basically everything in this list, these are all custom APIs that I built.
+27:34
+Daniel, the question is, are you selling a product or is it on GitHub or, you know, I wanna be like insane like you.
+27:41
+How do I do that? Is it, do I buy a product from you? I'm not really interested in selling this. I do have a product that I'm making.
+27:47
+It's kind of sort of related, but not exactly related.
+27:53
+But that's not what this is. This I'm actually getting ready to release as an open source project where basically
+27:59
+I publish all of those modules and they're on GitHub and then people take them, copy them, make new ones and make them better.
+28:06
+And that is a project called Fabric that will be coming out soon.
+28:12
+And I'm just gonna make it all free and publicly available. So, yeah, because the idea is that this should be a fabric for everyone to use.
+28:23
+And these APIs are just floating out there. And it's just a matter of like, where is it gonna be hosted?
+28:29
+Is it gonna be a private one or a public one? And those are all things I need to work out.
+28:35
+But I wanna make all the actual logic of these individual modules available to everyone. So, I mean, that's amazing and I'm really glad you're doing that.
+28:42
+Do people just follow you on GitHub? Or what's the best place to follow you and find out when this is released?
+28:48
+Yeah, yeah, it'll be on Daniel Miessler on GitHub. Yeah, the website is DanielMiessler.com.
+28:54
+Same as Twitter, it's all DanielMiessler. So, it'll definitely be out there. I'll put it on LinkedIn, I'll put it on Twitter and everything.
+29:01
+So for everyone who's following, please go and follow Daniel. I mean, this is amazing. I mean, it's really, I think I heard you say, and I think I mentioned it earlier, you had
+29:10
+this idea years ago, right? To do something like this and it's finally happening. Yeah, I've always wanted to do this.
+29:17
+And I went pretty deep into machine learning. I got a job at Apple.
+29:23
+I actually joined a machine learning team there and learned a whole bunch of machine learning, but it was so sort of like, hard to just deal with data and everything.
+29:31
+It's nowhere near as easy as it is now. So once things kicked off in November, I just went like full crazy into this.
+29:41
+So if you look at this output, it is absolutely insane. That's crazy. So look at this.
+29:46
+It pulled out all of her primary thoughts that she mentioned. And it puts it in this really clear view.
+29:53
+Pulls out the best quotes. It's got all of her habits, references of like all the different poetry that she likes,
+30:01
+some Greek mythology, and look, it's even got a recommendations section. That's crazy.
+30:07
+So, I mean, oh, and this is ridiculous. Watch this.
+30:12
+So once you do that, I have another one called rateforslow. And I'm not gonna run it because it requires I run that one again, it'll take forever.
+30:21
+But you do rateforslow. And what this is, is a rating of like five different levels. In fact, I could just maybe take a little bit of text.
+30:30
+Okay, so look at this. So because everything is pipeable, I'm sending to extract the wisdom.
+30:37
+And then I'm gonna say rateforslow. What is rateforslow mean, sorry?
+30:44
+So rateforslow means how quickly should I go and watch the original content.
+30:49
+Okay. So I wrote a algorithm that basically tells me that. So I'm gonna let that run.
+30:55
+So now it has to extract, it's extracting the transcript, then it's running to extract
+31:00
+all the wisdom from it. Then it's sending to rateforslow. And I've got levels of that. But this has allowed me to parse like so much content and just really, really enjoy them.
+31:11
+I watched a thing recently. It was actually Tyler Cohen.
+31:16
+He had somebody on and they just talked about art and a bunch of their hobbies.
+31:22
+And they just listed all these artists that I've never heard of. And now I have a full list. It's amazing.
+31:27
+And it only took like 30 seconds to run. I mean, it's crazy. I mean, I think I've got a million questions for you.
+31:33
+So while we're waiting for this, let me ask you some questions. Do you have a PhD in maths or something like that? No, no, I don't.
+31:41
+I went to school for computer information systems. And no, I didn't need any.
+31:48
+Well, there wasn't machine learning at the time anyway. There was, there was, but it wasn't a big thing.
+31:54
+And there definitely wasn't like generative AI at the time. So no, I wasn't exposed to AI at all growing up.
+32:02
+I would say the reason that I got exposed to this is just like, I've always had a foot in the extremely technical and a foot also in like, what's interesting for humanity.
+32:12
+And I've been merging them. So when generative AI popped, it just, it allowed me to merge them well.
+32:20
+Yeah, I mean, your background is mainly security. And I mean, it's amazing that you like doing this now. So, I mean, the reason I asked that question is a lot of people might feel that they, I
+32:29
+could never do this. I don't have a PhD in mathematics. I don't know like data science and all this stuff, but you've been able to do this without
+32:37
+that kind of knowledge, right? That's right, that's right. It's actually very similar to hacking.
+32:43
+It's great that you asked that question because people will say, well, how do I find the vulnerabilities?
+32:50
+What do I go into for security? And the answer is exactly the same as with AI. Go where your curiosity takes you.
+32:57
+The question is, well, how do I become curious? We got to expose yourself to a lot of things. And you have to have something that you want to do in the world, right?
+33:05
+And once you have those things and you start exposing yourself, ideas pop up. You have curiosities, you start chasing them.
+33:12
+And then pretty soon you're hacking because hacking is like answering questions. And it's the same with AI.
+33:19
+So for me, I know that I like to parse information. I know I like to output that information in different forms.
+33:26
+I know I want to be smarter and more informed. All those things are problems. And I write AI to solve those problems.
+33:34
+And now we have the output of rateforslow. So check this out, CSR, whatever acronym, as soon as possible.
+33:41
+This is the highest possible rating. And I told it to explain why it thinks this.
+33:47
+And look, it tells me exactly why it thinks that video. And by the way, it's matching that to its preferences about me that it knows.
+33:56
+I was gonna ask you that. I mean, this is very specific to you because you've kind of like taught it about what you like, right? That's right.
+34:01
+Because I mean, if you like art, maybe someone else doesn't like art, it wouldn't have given them that rating. Sorry, you were gonna say something.
+34:08
+You're interested in wisdom related to the meaning of life, the role of technology in the future of humanity, the intersection of technology and human culture, how to find
+34:16
+meaning in a world run by AI and similar topics. So that's how it's doing the filter.
+34:22
+Daniel, this is amazing. But like a lot of the audience are into cybersecurity, hacking type stuff, and this feels like you're
+Cybersecurity Demo
+34:27
+hacking the AI. Do you have like a cyber type example that you can show us? I do.
+34:33
+Yeah, I've got one that's pretty cool. So let's go to this recent thing that just happened.
+34:40
+I believe this happened very recently. Yep. Maybe yesterday. Idaho National Laboratory experiences massive breach.
+34:49
+So I actually have a scraper and a crawler that I could actually pull this in an automated
+34:54
+way. But for now, I'm just gonna grab all the text on this page and I'm going to paste it into
+35:01
+analyze incident. And this thing returns JSON describing the situation.
+35:09
+So basically what it does is I tell it to figure out who was the attacker, who was the defender, if it knows, it doesn't often know.
+35:18
+What attack did they use? What did they target? What was the fallout from it?
+35:23
+And even what remediation possibly would have fixed it? Look at this JSON output.
+35:32
+So evidently it was an Oracle system, the industry type, and I'm actually building a
+35:38
+database of these. So now I have a breach database with all these things as fields.
+35:44
+So what's really cool about this is if you have this type of database and you have like
+35:51
+a customer that you're trying to help, you could be like, what are the most common types of attacks you need to worry about?
+35:56
+Or you could even ask, what are the most recommended remediations for making yourself more secure?
+36:04
+And if you look down here, look at this action priority of remediation, vuln management,
+36:10
+data protection, incident response, all good ideas. Just off an article.
+36:16
+Just off an article. Yeah, and the more detailed the article, the better this becomes. If this was a one paragraph thing, this wouldn't have nearly as much detail.
+36:24
+But so like you could just come up here and go to BleepingComputer. In fact, let's just do another one real quick.
+36:31
+Okay, I'll click on this one here.
+36:37
+Put it in the clipboard, paste into analyzeincident. And again, this is going up. Oh, actually, let me show you this code.
+36:44
+This is one of the monster pieces of code. All right, so I'm gonna start scrolling.
+36:54
+Wow. So I'm pulling all of this. And I've given it an explicit JSON output.
+37:03
+I even tell it about MITRE.
+37:08
+So we could do a MITRE rating. And look how long this thing is.
+37:14
+And this attack, why is it taking you forever to do this? This took quite a while to build. Yeah, yeah, that one took a bit.
+37:22
+And yeah, and you get this type, look at this, number of accounts, sensitive data, remediation
+37:29
+actions. It's even, look at, it's got the MITRE. It's got the MITRE output in here.
+37:35
+Wow. I think the last thing I wanna show is just that I turned a number of these into GPTs
+GPTs
+37:42
+that people can use like immediately. Oh, wow. These are the GPTs that came out, I guess, two Mondays ago during the Dev Day.
+37:50
+So I got one that does song meaning. You type in any song, it brings back the meaning of the song.
+37:57
+So just for people who don't know, what is a GPT? So a GPT is the name for, it's a brand name that OpenAI came out with during Dev Day for
+38:08
+an independent AI, during Dev Day for an independent AI agent, basically. So basically you go into it, I'll show you.
+38:17
+This one is Huberman routines. What are Huberman's overall recommendations? And boom, it starts running.
+38:24
+These are kind of like the APIs that I've built, but it's on a webpage. So in my opinion, it's not quite, I like the Unix style of being able to pipe in and out
+38:33
+of things as opposed to the web, but it's still useful. So it's giving all his things.
+38:39
+So basically I taught it about Huberman's knowledge. You created that one. And now it's a whole new interact.
+38:45
+Yeah. Oh, wow. Yeah, I uploaded a whole bunch of content about Huberman stuff.
+38:52
+So this one is a book chat. You can upload any full book and then just have a conversation with it like you're talking
+38:58
+to the author. Oh, wow. Oh, this one is ridiculous.
+39:03
+This one is RPG session. So one of the things I do is I get together with friends in person, like here in town,
+39:13
+and we play a role playing game like every Friday night. So let's see, where is this one?
+39:19
+Previously on Crown & Mayhem. Yeah, so this is the tweet here that I put out about this.
+39:26
+Basically what I did was, so during the D&D session, we actually record everything.
+39:31
+Then I put it into that MacWhisper thing, which I showed you, and that turned it into
+39:37
+text. Then I took that text and extracted it using a custom API, which is actually this thing
+39:45
+here, RPG session. And I have an API version of it as well. And that turns it into like this very clear, almost like cinematic description of the role
+39:55
+playing game that we just played. Make sure GM is very happy by the way, because it basically turns their thing into like a
+40:02
+screenplay or something. What we did after that was I actually trained my voice in 11labs, and here's what the voice
+Eleven Lab
+40:11
+sounds like. So look at this. I can say anything in this text, which I didn't actually say. And this was trained on just two megabytes of data, or like three minutes of my voice.
+40:20
+This literally from me signing up for the website to producing a trained voice, it took
+40:25
+me like three and a half minutes. Yeah, it's interesting that because I find that it works really well with American accents,
+40:32
+but like people from other parts of the world, it doesn't do so great. But it's amazing that it, I mean, that sounds just like you.
+40:38
+Previously on Crown and Mayhem, our heroes brave the treacherous bog, matching spectral
+40:44
+lights that shocked and danced through the- That's not bad, right? That's very good.
+40:49
+Yeah, so they have a number of voices. 11Labs, as far as I know, it's got like the most realistic voices, them in OpenAI.
+40:55
+So yeah, that's pretty cool. You can basically, and it's like previously on, so it's like a teaser for the next episode.
+41:03
+Anyway, we thought it was pretty cool. It's great. I guess it goes back to the creativity thing of like, what are you doing in your daily
+41:09
+life? And how can it benefit if something was always working for you in the background with AI?
+41:15
+And that's the way I view this. Daniel, I mean, there's a few things here that, number one, it's unbelievably amazing,
+41:22
+but it's unbelievably scary at the same time. The question I get from a lot of people, YouTube comments is, it's pointless even worrying
+41:31
+about studying because AI is gonna take all the jobs away. Yeah, it's a great question.
+41:36
+So the way that I would think about that is the tools don't matter if you don't know what
+41:43
+to do with them, right? So all these different things that you're trying to accomplish in life, right?
+41:49
+As we can see on this screen here, you're trying to accomplish these different things. You've got personal goals, you've got professional goals or whatever, and there's many threads
+41:56
+inside of all of these. And you have to be able to match a problem with a solution and then assign the AI to
+42:04
+it, right? The fact that the AI exists doesn't do the work for you. So I would say that the more general your knowledge is, and you wanna be like an expert
+42:14
+in a couple of things, but the more general your knowledge is and the more you can like link knowledge from one domain to another, this also really helps with hacking, by the
+42:24
+way, that's gonna make you really good at AI if you just like understand like the je ne sais quoi of different things.
+42:31
+Like if you know what the real problem is and you can articulate the problem, well then you can articulate the solution.
+42:38
+So I would say people who get really good with AI, they're gonna be in really good shape.
+42:44
+They're not gonna suddenly lose their job because there's gonna be more to do with AI
+42:50
+and the problems will just change and you just evolve with it. Now, eventually if it becomes superhuman and there's a million of them, well, we could
+42:58
+have that conversation. Right now, people who learn AI, massive, massive advantage.
+43:06
+I heard you, I think it was at Nahamsec, Ben's, Nahamsec, you did a presentation with Ben
+43:13
+where you're talking about like in the old days, right? Automation took away a specific job. I mean, you can do a much better job of explaining what you were talking about there where you
+43:23
+mentioned context. It's like things are changing now where AI could take away a lot of jobs.
+43:28
+Yeah, yeah. Essentially, in terms of like, I would say average knowledge worker jobs, it is a little
+43:36
+bit scary. It requires people to sort of up level their thinking into more thinking like this to be
+43:43
+able to survive, to be nimble, right? Because before what happened was we were placing specific tasks like, oh, we're going to do
+43:52
+spreadsheet analysis, but the tool only did that. So guess what? You could just take your job and do something other than spreadsheet analysis.
+44:00
+Whereas AI, it's not replacing a specific task, it's replacing intelligence and creativity.
+44:07
+And that's what's truly scary. But in truth, it's not replacement, it's augmentation, right?
+44:13
+And that's why I think about it in this scope, in this way of like, I already have a million
+44:19
+things I want to do, but having the AI itself, it won't do it.
+44:25
+You have to match it. You have to match your desires with the tooling. And that's where the creativity is.
+44:30
+I think you mentioned earlier, it was rich people or technical people have a huge advantage. You have to basically get on this bandwagon or on this train or whatever you want to call
+Will AI take our jobs?
+44:39
+it right now. Because if you don't, you're going to get left behind, right? Yeah.
+44:44
+I mean, and it's people, I mean, like your audience, people following people like you who are like giving all this knowledge out.
+44:50
+And this is why I'm so excited to share this. And this is why I'm going to be releasing this open source, is I want this to be a set
+44:56
+of tools that's available for everyone to match their problems with. It's like, okay, I don't have life purpose problems, but I have creativity things, or
+45:04
+I want to do a bunch of stuff with productivity. I want to be more efficient in this or that. Well, those are the APIs that you build.
+45:11
+Those are the little AI agents that you build and you stack them all together. One really cool example of this is Andrej Karpathy, who ran the FSD system for Tesla.
+45:22
+He was talking about how it's nothing but a bunch of hacks. It's this giant data pipeline with like, I don't know, dozens of little individual spots,
+45:32
+and then it produces an output. And if they have a mistake, like the car hits a curb or something, they're like, okay, which
+45:39
+one of these 37 steps actually had a problem? They go fix that little one. And this is what I've been doing for like all these months.
+45:47
+Like I'm like, oh, you know, I don't like how it did that essay. I don't like how it did that tweet thread. Boom, boom, go change the AI.
+45:53
+Now the next time I run it, it's even better. So do you think it's worth people getting into cyber?
+45:59
+I mean, I'm assuming like cyber hacking is not going to change. Just the way we do it is going to change. Yeah, it's funny.
+46:05
+Myself and Jason Haddix, Joseph Thacker, a bunch of us hack on, are kind of mixing hacking
+46:12
+with this at the same time. And we talk about this all the time. And basically what's going to happen is AI is going to come up from the bottom.
+Augmentation with AI
+46:20
+So standard vulnerability assessments, attack surface management, I'm already building like
+46:27
+some AI into my existing attack surface management platform to like manage it for me with agents.
+46:33
+That stuff is going to go fairly quickly to like AI. AI is going to be able to say, oh, it looks like you have a webpage.
+46:40
+Oh, I actually did. I could show that demo maybe another time, but I did a thing where I took the screenshots
+46:47
+from the output from a scan and pasted it in and said, which nuclei templates?
+46:53
+Yeah, so essentially what that one does is you just drag screenshots into it. And by the way, anytime I'm going to a website or anything, I'm physically doing anything,
+47:02
+that's, I put that surrounded in red. Like I need to automate that.
+47:07
+Because ideally what I'm actually building on the backend is that it all just runs.
+47:12
+It finds the screenshots and then it submits those screenshots. So essentially what this thing does is it uses the GPT-4 vision API.
+47:22
+It looks at the screenshots. And if it's a pop-up with a login window, if it sees it's like nginx or it sees a particular
+47:28
+URL structure, it'll be like, oh, this is probably Apache Tomcat. And it recommends nuclei templates that match that.
+Advantages in being a Technical person
+47:34
+Wow. So you guys were discussing how like the low-hanging fruit is going to be taken by AI, but the
+47:41
+concern is always from people who are watching is like, I'm just starting my career. Is it, am I going to have a job in five, 10 years?
+47:47
+Do you, like, I'm assuming that the role, the stuff that we do as humans will just change.
+47:53
+To a degree. I mean, at some point, there's going to be fewer things to pivot to, but it's not really
+47:59
+a concern like anytime soon. I would say if you're looking to get into cybersecurity, absolutely still get in.
+48:07
+First of all, there's a massive list of people who need to be hired. Like hiring managers are looking for people.
+48:13
+And it's funny, they're not hiring the people, oftentimes they're not hiring the people coming out of school.
+48:19
+I know a lot of people coming out with a degree and I'm not saying not to go to college. I'm saying curiosity first, tinkering first, experimentation first before credentials.
+48:29
+You could walk in with a CISSP in a four-year degree and you will not be hired compared to someone who is blogging on YouTube, releasing content, showing that they're doing stuff.
+48:41
+And they'll get hired like out of high school, right? So that's kind of the most important thing.
+48:47
+And there are so many jobs that are unfilled where they need people that you're gonna have
+48:52
+a job if you're curious in this way. Now, I would say for security testing, the automated stuff with AI is gonna take like
+Is it worth getting into Cybersecurity?
+49:03
+attack surface management, it's gonna take vulnerability management or vulnerability assessment first.
+49:09
+But the highest tiers of bug hunting, the AI is not there yet. If you take someone like Sam Curry, for example, one of the best guys out there, you're not
+49:20
+automating what he's doing anytime soon. So I would say there is plenty of time left in cybersecurity.
+49:28
+It's a curiosity-based field. And if you combine that with AI, you'll be even more powerful.
+49:34
+So let's pivot to like personal life. How much time has this saved you? Like, is it like a huge percentage of your time?
+How much time has this saved you?
+49:40
+Oh, it's a massive percentage of my time. Oh, actually, sorry, Dave. I actually have one of my coolest demos.
+49:47
+So, okay, you just mentioned saving time. Okay, let me show you this.
+49:54
+This is absolutely insane. So I'm gonna go to Feedly, which is how I read news and I have this category called
+50:02
+Essential. Okay, this is like very practical, very useful workflow.
+50:07
+So I have a newsletter called Unsupervised Learning. And yeah, this is it over here, the newsletter.
+50:14
+So we can subscribe to that, right? Yeah, absolutely, you can subscribe to it. It's got like 80,000 subscribers.
+50:21
+It's pretty cool. It's like security plus AI plus some human stuff. But let's say I'm looking for news and I do this all the time.
+50:29
+In fact, I'm gonna show you a couple of different ways. So Talking Robots, okay, cool. So I click on this.
+50:35
+If I click on Read Later, something magical happens.
+50:42
+And this is using one of the other APIs that I built, which is called Summarize.
+50:47
+And this is for my day-to-day. So I release a show every Monday morning, which means Sunday I spend like eight hours
+50:54
+working on this thing, doing custom writing and stuff. But now I have to do less collection because of this.
+51:01
+So here is another view. I know it's small, but this is Feedly as well.
+51:07
+In fact, it's showing the exact same stories as what's on screen right now. Earth likely passed. Okay, I'm gonna slide to the right.
+51:16
+I just marked that as Read Later. Okay, watch this.
+51:23
+This is my summaries document, which is a Google Doc. And right now I'm at 96 pages.
+51:30
+That's big. But look what just got added to the bottom. Earth's temperature just tipped over the critical two Celsius warming threshold.
+51:38
+Look at this. It's got a more link with the actual link to the story.
+51:45
+And it gave me additional context. So watch this. I come over here. I go to this new newsletter, paste it in, and I have a story for my newsletter.
+51:55
+That's amazing. So you basically, rather than you having to summarize that, read the whole article, do
+52:01
+all this work. It's now available as part of your newsletter that you're sending out. But AI's done a lot of work for you.
+52:07
+It's done a lot of the work. So what I usually end up doing is I usually end up cutting this and I'll go and write
+52:13
+a bunch of custom stuff. Or I'll take some of the extra links. If it's a security report or something, this will have one link in it.
+52:21
+And then I'll be linked to the original report. And a lot of time I spend custom writing, so I have a bunch of custom content as well.
+52:30
+But if I wanted to, I could literally take this content and just publish it. Oh, look at this.
+52:36
+Oh, here's what's really cool. If it's a tool, it actually does emojis for it. It actually links to the article author.
+52:45
+If it's a GitHub project, it links to the person who wrote it. It's unbelievably powerful.
+52:50
+And in fact, I have another one which can take this entire output and actually write the report.
+52:56
+So let me just grab a few of these. Oh, and for security ones, it's got a siren versus a caution sign.
+53:06
+And that indicates if it's a critical or a high vulnerability.
+53:16
+Create newsletter. This will actually not only take the stuff from the summaries, but it will organize it
+53:23
+into the sections that I actually use for the newsletter. The more I talk to you, the more it looks like, I remember t he days before we had a
+53:32
+cell phone, like iPhone or whatever your favorite is. We were limited, and then suddenly you had that device and it augmented you dramatically.
+53:40
+And there was a differentiation between people who had a cell phone and people who didn't. And the guys with the access to the cell phone and the internet were in a different league.
+53:48
+And it sounds like this is the same thing. It's like the next major shift in technology, right? It really is, and that's how I think about it.
+The Next Major Shift in Technology
+53:55
+And I really think of it as, like you were saying before in the title of this presentation,
+54:01
+augmented, right? It's a difference between being like a, like you said, okay, a farmer from 150 years ago
+54:09
+without a mobile phone, they are X amount of knowledgeable or educated or whatever,
+54:16
+exposed, curious, all those different things. You have someone now who could be going through grade school, but they've been exposed to
+54:22
+so much. It's like when you add AI to this, you're just taking all the things that you have capabilities
+54:29
+doing, all your creativity and productivity, and you're just magnifying it. And it could be working while you're not even working.
+54:37
+Like for example, this, I even have, I have a separate email address set up for security
+54:46
+and AI newsletters. That separate email address receives the email if it knows it's coming from the right email
+54:54
+address, it parses it and sends it to that summaries document. Wow. So it's working while I'm asleep.
+54:59
+I mean, the big question is, Daniel, you started this journey like seriously about a year ago,
+55:06
+right? It's a year now. How do I become you if I wanna start this journey?
+Advice, Tips and Tricks
+55:12
+Or what do you, what's the path? Is it like books to read? Is it just like try stuff?
+55:18
+What do I do? Follow your newsletter, obviously, but what tips and tricks do you have to like, from
+55:23
+what you've learned in the last 12 months and obviously all the knowledge you had before, what would you advise?
+55:28
+Yeah, so what I would suggest is to get really up to speed on knowing the tools.
+55:36
+There's one particular creator that I really enjoy around AI who like weaves a bunch of
+55:41
+stuff together. His name is AI Jason. Yeah. He puts together some really cool stuff. Is that a YouTube channel or is it like a newsletter?
+55:48
+It's a YouTube channel. Okay. Yeah, it's a YouTube channel. He's really great.
+55:55
+And even more important than that, once you have familiarity with the tools, and I would say like try to learn all these different tools, setting up a Flask API, I would say
+56:05
+that's a little bit advanced, but it's actually not too difficult. You wanna be able to have these commands able to run.
+56:11
+And that's why I have the two sides. I have the client side that calls the Flask API and gets the output, but you don't have
+56:16
+to do that. You could use GPTs. You could even put this inside as just like custom queries inside of ChatGPT itself.
+56:23
+The most important thing is not that you have that tooling. The most important thing is that you know what you want to do.
+56:30
+Essentially what I recommend is you make a list of the things you're trying to do in your life. You're like, I wanna get better at security.
+56:36
+I wanna get better at reverse engineering. I wanna get better at attack surface management and recon and OSINT.
+56:43
+Like the amount of things you could do with OSINT with this thing, I haven't even started going down that path.
+56:49
+You make a list of your life first. You turn that into modules, then you take your AI tools that you now know and you overlay
+56:57
+them on top. So go and follow the YouTube, sorry, what's the name of the creator again? AI Jason.
+57:03
+Follow you because you obviously putting a lot of stuff out there. Do I need to learn programming or is it just like go to the ChatGPT interface and play
+Do you need to learn programming for this?
+57:12
+around with that? You've obviously got all this knowledge. Like you're scripting, you're creating APIs, all the rest of it.
+57:20
+Is it like any tips again for like practical things I need to do? Yeah, I would say you should learn some programming.
+57:27
+I'm a halfway decent programmer but I'm not like enterprise developer.
+57:32
+I would say you need to learn some Python. I would recommend learning Python. Python is kind of the defacto AI language.
+57:41
+I would say start thinking about JavaScript. Get pretty good at JavaScript and JSON and maybe even TypeScript, which is a subset of
+57:51
+JavaScript. And I would say those are kind of your main technical components and then just get really
+57:58
+good with the tech. Because if you're writing the scripts, okay, that's Python or bash or whatever you're gonna
+58:04
+use. And if you're writing the Flask application, I mean, you've got to understand APIs and endpoints.
+58:10
+So there's a little bit of programming there but most of it is thinking about what you want to do because one thing to think about here is that the tech itself keeps getting
+58:19
+easier. Yeah. Right? Pretty soon, everyone's gonna have the ability to do all these things.
+58:24
+The question is, what are they doing with them? Here's a great example. Reading is a superpower.
+58:29
+How many people read books? Exactly. Not many, right? And if you look at all these AI tools I've been talking about, you ask the average person
+58:38
+on the street, what is AI? And they're like, oh, you mean like ChatGPT? I've used it a couple of times. So most of the tools are being left on the table.
+58:47
+So somebody like in your audience is gonna be able to pick up on this and be like, holy crap.
+58:52
+I could use these nine things in these 20 different ways. You obviously giving yourself superpowers with this.
+Giving yourself superpowers
+58:57
+That's what it looks like. I mean, what you're doing is insane. What your normal productivity is this level and you've gone like crazy with AI.
+59:07
+Let's talk about what you've done because like you went by yourself 12 months ago, approximately,
+What have you done so far
+59:14
+right? Are you selling tools or from a business point of view, what are you doing with this?
+59:19
+How I spend my time is basically built in on three different pieces. So one, I'm building a company.
+59:25
+So I actually have a company, it's also called Unsupervised Learning, but I'm building a platform called Telos and that platform has a product which is coming out probably the
+59:37
+very first or second month of next year. And that's like an enterprise product.
+59:42
+It's like an instance of Telos, kind of weird, but it's basically to help startups survive.
+59:49
+So that's like a product that I'm building. And it's AI, right? And that's like, yeah, it's very much AI woven into it.
+59:57
+So that's one thing. The second thing is I do a bunch of advising and consulting and I still do security assessments.
+1:00:03
+So I'm still hacking and I'm still helping people with their security programs. And that's like my advising and consulting bucket.
+1:00:10
+And then the third bucket is Unsupervised Learning, which is the show and the newsletter
+1:00:15
+and the podcast. So those are the three buckets. So one, I'm building the product and that is where I'm gonna be selling subscriptions
+1:00:26
+to that, to enterprises. So that's like an enterprise thing. And I'm also kind of underneath that bucket or maybe all of those buckets is I'm releasing
+1:00:34
+open source tools. So I'm releasing blog posts all the time describing how to actually do this stuff.
+1:00:40
+I'm gonna have Fabric coming out soon, which is that open source framework for all these different prompts and templates and how they could work together.
+1:00:49
+So it's like just kind of giving back to the community because I want more people doing
+1:00:54
+this. I think it's amazing. I mean, whenever I talk to people like you, it's, you know, some people complain that
+1:01:00
+there's no opportunities, but you've just like opened a whole crazy world to a lot of us.
+1:01:06
+Yeah, that's what I'm hoping. I'm hoping people just realize, holy crap, this is right there and available and I can
+1:01:11
+use it. And a lot of this is like, I mean, it's like 10 lines of code. Like the most important thing is you have to know what you want and you have to be able
+1:01:19
+to articulate that in the AI and it will give you what you want. It will surprise you. I saw you again, I think it was on Ben's presentation where you said the, you had like this, I can't
+1:01:31
+remember exactly, you had this like stack. Printing press was like world changing. Internet was world changing. And then you put AI on top of that.
+1:01:39
+It's like AI has changed everything. Yeah, basically I asked printing press, mobile, internet and a couple of other sort of technological
+1:01:48
+markers from the past, where would you put AI in this thing? And it's what I do in my talk in the very beginning.
+1:01:54
+And people are like, oh, I would slot it in between mobile and internet, or I would put it over internet, but not above printing press.
+1:02:03
+And then the very next slide is like, I put it on top of everything, right? Because it's magnifying and replacing human intelligence and creativity, which none of
+1:02:13
+those other technologies did. And so the takeaway there is, if you, I mean, sort of the way, the takeaway I'm getting,
+1:02:20
+and perhaps you can correct me is, you need to, the world's changing. AI is rapidly changing the world.
+AI changed everything
+1:02:27
+ChatGPT kind of like brought it to the surface. Now's the time to jump on this because there's a lot of opportunities.
+1:02:32
+Yeah, that's exactly right. And that's, the point you brought up is really important.
+1:02:37
+It's like ChatGPT, people shouldn't think of that as AI. That's like, in my mind, it's almost like a gimmick.
+1:02:44
+It's just like a teaser to get people into the world, into the AI space, but the real
+1:02:50
+power is very fast integrations. The ability to just like pull this up like this, the ability to ask my phone, right?
+1:03:00
+And just have it go to any one of these APIs. You could use Apple shortcuts to call any one of these APIs and give back the response.
+1:03:08
+And then being able to stack those together, like that's just, it's so much more than ChatGPT.
+1:03:13
+That's amazing. Daniel, once again, did you want to mention like where people can find you? I mean, it's fairly obvious, but just to wrap it up, and I really want to thank you for
+Where can people find you?
+1:03:22
+sharing and opening up this like whole new world for us. Yeah, absolutely. So I've got a newsletter, it's called Unsupervised Learning, and the URL is danielmeesler.com.
+1:03:32
+All one word.com. Twitter is Daniel Miessler and GitHub is Daniel Miessler.
+1:03:38
+Daniel, thanks so much. Really appreciate it, man. All right, thanks for having me.
+

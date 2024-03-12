@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import re
+
+def remove_timestamps(input_file, output_file):
+    with open(input_file, 'r') as raw_file:
+        raw_text = raw_file.read()
+
+    # Use regular expression to remove timestamps
+    clean_text = re.sub(r'\d+:\d+(:\d+)?\s', '', raw_text)
+
+    with open(output_file, 'w') as clean_file:
+        clean_file.write(clean_text)
+
+if __name__ == "__main__":
+    input_file = "raw.file"
+    output_file = "clean.file"
+
+    remove_timestamps(input_file, output_file)
+
+    print("Timestamps removed successfully. Clean transcript saved to 'clean.file'.")
