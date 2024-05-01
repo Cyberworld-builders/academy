@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+from collections import Counter
+import re
+
+def count_words(input_file, output_file):
+    with open(input_file, 'r') as file:
+        text = file.read()
+    
+    # Convert text to lowercase and extract words using regex
+    words = re.findall(r'\b\w+\b', text.lower())
+    
+    # Count occurrences of each word
+    word_count = Counter(words)
+    
+    # Sort the word count in descending order
+    sorted_word_count = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
+    
+    # Write the result to the output file
+    with open(output_file, 'w') as file:
+        for word, count in sorted_word_count:
+            file.write(f"{word}: {count}\n")
+
+if __name__ == "__main__":
+    input_file = "clean.txt"
+    output_file = "word_count.txt"
+    count_words(input_file, output_file)

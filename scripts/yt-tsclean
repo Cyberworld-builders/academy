@@ -13,9 +13,9 @@ def remove_timestamps(input_file, output_file):
         clean_file.write(clean_text)
 
 if __name__ == "__main__":
-    input_file = "raw.file"
-    output_file = "clean.file"
+    input_file = "raw.txt"
+    output_file = "clean.txt"
 
     remove_timestamps(input_file, output_file)
 
-    print("Timestamps removed successfully. Clean transcript saved to 'clean.file'.")
+    print("Timestamps removed successfully. Clean transcript saved to 'clean.txt'.")
