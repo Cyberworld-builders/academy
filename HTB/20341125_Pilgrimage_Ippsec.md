@@ -23,28 +23,105 @@ Here's a good playlist from Ippsec:
 
 [IppSec - Hack the Box - Easy *nix Boxes Walkthroughs](https://www.youtube.com/playlist?list=PLqyUgadpThTKZ_ZOqeNrxair1EeYZAKT5)
 
-## Notes
+## Links, Commands, Tools, Vulnerabilities, Exploits and Technologies
 
 ### Links
+
+These are any relevant links.
+
 [Pilgrimage](https://www.youtube.com/watch?v=aaUlHicClrI&list=PLqyUgadpThTKZ_ZOqeNrxair1EeYZAKT5&index=1&t=4s)
 
+### Tools
+
+These are the hacking tools used by the attacker.
+
+- Burp Suite
+- Go Buster
+- Git Dumper
+
+### Vulnerabilities
+
+These are any known vulnerabilities exploited by the attacker for the hack.
+
+- [CVE-2022-44268](https://nvd.nist.gov/vuln/detail/CVE-2022-44268)
+
+### Exploits
+
+These are the exploits that the attacker used from the community.
+
+- 
+
+### Technologies
+
+These are the technologies used by the target.
+
+- ImageMagick version (7.1.0-49) 
+- binwalk 2.3.2
+- Nginx
+- Ubuntu
+- PHP
+- Git
+- 
+
 ### Commands
+
+These are the bash commands run by the attacker.
 
 #### Service Enumeration
 ```bash
 sudo nmap -sC -sV -oA nmap/pilgrimage 10.10.11.219
 ```
 
-**Explanation:**
+#### Search for a PNG file
+```bash
+locate -r png
+```
 
-- `sudo`: Executes the Nmap command with administrative privileges, enabling access to lower-level network functions.
-- `nmap`: Initiates the Nmap scanning tool.
-- `-sC`: Enables default script scanning, which runs a set of scripts designed to detect common vulnerabilities and perform basic enumeration.
-- `-sV`: Enables version detection, which attempts to determine the versions of services running on the target machine.
-- `-oA nmap/pilgrimage`: Specifies the output format and file name prefix for the scan results. In this case, it saves the results in three formats: normal, grepable, and XML, with the prefix "pilgrimage" in the directory "nmap."
-- `10.10.11.219`: Specifies the IP address of the target machine to be scanned.
+#### Copy a file to the current directory
+```bash
+cp /usr/share/zenity/zenity.png .
+```
 
-This command will conduct a comprehensive scan of the target machine, providing detailed information about its services and potential vulnerabilities.
+#### Enumerate valid directories with Gobuster
+```bash
+gobuster dir -u http://pilgrimage.htb -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt -x php -o root.gobuster.out
+```
+
+## Summary
+
+- 00:00 - Introduction
+- 00:55 - Start of nmap
+- 03:00 - Uploading an image file and trying to identify how the upload works
+- 06:20 - Running Git-Dumper to download the exposed .git directory, taking a look at the source code
+- 09:45 - Looking at the ImageMagick version (7.1.0-49) and seeing it is vulnerable to CVE-2022-44268
+- 13:30 - Generating a malicious image and downloading the sqlite database
+- 19:30 - Doing a PS and seeing inotifywait is being used to run a bash script when files created in web directory
+- 21:35 - Showing why the bash script is not vulnerable
+- 28:00 - Finding a binwalk exploit for version 2.3.2, which takes advantage of path traversal in PFS files
+- 32:50 - Taking a look into the exploit to see how it works
+- 35:30 - Showing the PFS File Format
+
+1. Service enumeration
+2. Server redirects to domain. Add domain to hosts file.
+3. Rerun nmap enumeration command
+4. Check out the website in a browser
+5. Since it's a file uploading app, search for a png.
+6. Copy the last file in the results to the current directory.
+7. Before uploading it, prepare to analyze the requests with Burp Suite
+8. Used the repeater tab to rapidly repeat the request.
+9. Analyzed the response object.
+10. Grabbed a link from the web interface once the upload is successful.
+11. Noticed it renames the file.
+12. Tried uploading a .php file to see if we can hit it.
+13. It gets converted back to a png
+14. Tried discovering an "uploads" directory.
+15. Enumerate valid directories with gobuster.
+16. Tried accessing the /tmp/ directory. 404
+17. Tried /tmp/ with the known file. 404
+18. Considering testing for race conditions but want to save that for the end because we might be able to find out exactly what is happening if we can get the source code.
+19. 
+
+## Notes
 
 ### Introduction
 
@@ -69,6 +146,13 @@ Here's a clearer and formatted version of the instruction:
 ```bash
 sudo nmap -sC -sV -oA nmap/pilgrimage 10.10.11.219
 ```
+
+- `sudo`: Executes the Nmap command with administrative privileges, enabling access to lower-level network functions.
+- `nmap`: Initiates the Nmap scanning tool.
+- `-sC`: Enables default script scanning, which runs a set of scripts designed to detect common vulnerabilities and perform basic enumeration.
+- `-sV`: Enables version detection, which attempts to determine the versions of services running on the target machine.
+- `-oA nmap/pilgrimage`: Specifies the output format and file name prefix for the scan results. In this case, it saves the results in three formats: normal, grepable, and XML, with the prefix "pilgrimage" in the directory "nmap."
+- `10.10.11.219`: Specifies the IP address of the target machine to be scanned.
 
 This command covers script scanning, version enumeration, and outputs the results in multiple formats for further analysis.
 
@@ -107,3 +191,14 @@ Then, add the following line:
 This adjustment will simplify our interactions with the target server as we proceed with our reconnaissance and exploitation efforts.
 
 https://youtu.be/aaUlHicClrI?si=UcUnslRZtJe3Bel7&t=102
+
+
+**Inspecting Requests with Burp Suite:**
+
+Before proceeding with any uploads, it's a good practice to intercept and analyze the requests using Burp Suite. This allows us to gain insight into the data being sent and received between our browser and the server.
+
+Upon intercepting the requests and clicking the "shrink" button on the website, we observe that it initiates an upload process. The request contains a variable to convert, the file name, and the image file itself.
+
+After forwarding the request to the Repeater tab in Burp Suite, we receive a successful response from the server. By examining the response, we find a link to the uploaded file, confirming that the process was indeed successful.
+
+With this understanding, we can proceed confidently with our exploration and potential exploitation of the upload functionality on the website.
