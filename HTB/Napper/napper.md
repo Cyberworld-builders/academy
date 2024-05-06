@@ -7,8 +7,9 @@
 ## Getting Started
 
 #### Service Enumeration
+Using double-reverse flag.
 ```bash
-sudo nmap -sC -sV -oA nmap/napper 10.10.11.240
+sudo nmap -sC -sV -oA nmap/napper -vv 10.10.11.240
 ```
 
 #### Response
