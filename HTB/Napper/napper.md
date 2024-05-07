@@ -1,6 +1,7 @@
 # HTB: Napper
 
 ## Box Info
+- ***Walkthrough by:*** IppSec
 - ***OS:*** Windows
 - ***Date:*** November 11, 2023
 
