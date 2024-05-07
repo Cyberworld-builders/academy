@@ -5,6 +5,53 @@
 - ***OS:*** Windows
 - ***Date:*** November 11, 2023
 
+## Tools Used
+- BurpSuite
+- Ghidrah
+- 
+
+## Known Vulnerabilities Exploited
+- 
+
+## Malware Involved
+- NapListener
+- 
+
+## Related Technology
+- Golang
+- IIS
+- ElasticSearch
+- C#
+- Dotnet
+- Hugo (Site builder for Golang)
+
+## Concepts
+- Reverse a Go binary
+- 
+
+## Contents
+Sure, here's a table of contents for the timestamps:
+
+1. [Introduction](#introduction)
+2. [Start of nmap, showing -vv will cause the output to contain TTL](#start-of-nmap)
+3. [Checking out the website](#checking-out-the-website)
+4. [Doing a VHOST Bruteforce to discover the internal domain and discovering credentials on a blog post](#vhost-bruteforce)
+5. [Checking out the NAPListener blog post, which gives us a way to enumerate for the NAPLISTENER Implant](#naplistener-blog-post)
+6. [Showing the Backdoor code to discover how it works](#backdoor-code)
+7. [Building a DotNet Reverse Shell and renaming the method to Run, then using Mono (mcs) to compile](#dotnet-reverse-shell)
+8. [Converting the DLL to base64 and getting NAPLISTENER to execute it](#dll-to-base64)
+9. [Discovering a draft blog post talking about them getting rid of laps and building a custom solution that uses elastic](#elastic-blog-post)
+10. [Setting up a tunnel with Chisel so we can talk to Elastic](#chisel-tunnel)
+11. [Using curl to enumerate Elastic](#curl-enumerate)
+12. [Reversing the Golang binary with Ghidra](#golang-reverse)
+13. [Creating a Golang Binary to grab a document (seed), then using search to grab the blob, and decrypting it with AES-CFB](#golang-binary)
+14. [Connecting to Elastic, using a Proxy](#elastic-proxy)
+15. [Grabbing the Seed with the Golang Elastic Library](#grabbing-seed)
+16. [Grabbing the Blob with Golang Elastic Library](#grabbing-blob)
+17. [Using the Seed to generate our 16 byte key](#generate-16byte-key)
+18. [Creating a decrypt function](#decrypt-function)
+19. [Getting the PlainText then using RunasCS to get a reverse shell as the Backup User, which is administrator](#plaintext-reverse-shell)
+
 ## Timestamps
 - [00:00 - Introduction](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=0s)
 - [00:55 - Start of nmap, showing -vv will cause the output to contain TTL](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=55s)
@@ -30,12 +77,17 @@
 - [00:00 - Introduction](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=0s)
 
 #### Service Enumeration
-Using double-reverse flag.
+Using double-verbose flag.
 ```bash
 sudo nmap -sC -sV -oA nmap/napper -vv 10.10.11.240
 ```
 
-#### Response
+#### Looking at the Results
+```bash
+less nmap/napper.nmap
+```
+
+#### Results
 ```
 Starting Nmap 7.94 ( https://nmap.org ) at 2024-05-06 12:33 CDT
 Nmap scan report for 10.10.11.240
@@ -66,6 +118,15 @@ Host script results:
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 26.00 seconds
 ```
+
+#### Modify Hosts File
+```bash
+10.10.11.240    app.napper.htb napper.htb ca.napper.htb
+```
+
+
+
+
 
 ### Start of nmap, showing -vv will cause the output to contain TTL
 - [00:55 - Start of nmap, showing -vv will cause the output to contain TTL](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=55s)
