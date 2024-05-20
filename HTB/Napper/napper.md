@@ -10,6 +10,9 @@
 - Ghidrah
 - 
 
+## Packages
+- `mono-devel`
+
 ## Known Vulnerabilities Exploited
 - 
 
@@ -27,6 +30,7 @@
 
 ## Concepts
 - Reverse a Go binary
+- Writing a reverse shell payload in cs
 - 
 
 ## Contents
@@ -76,6 +80,9 @@ Sure, here's a table of contents for the timestamps:
 ### Introduction
 - [00:00 - Introduction](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=0s)
 
+### Start of nmap, showing -vv will cause the output to contain TTL
+- [00:55 - Start of nmap, showing -vv will cause the output to contain TTL](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=55s)
+
 #### Service Enumeration
 Using double-verbose flag.
 ```bash
@@ -124,12 +131,6 @@ Nmap done: 1 IP address (1 host up) scanned in 26.00 seconds
 10.10.11.240    app.napper.htb napper.htb ca.napper.htb
 ```
 
-
-
-
-
-### Start of nmap, showing -vv will cause the output to contain TTL
-- [00:55 - Start of nmap, showing -vv will cause the output to contain TTL](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=55s)
 
 ### Checking out the website
 - [04:40 - Checking out the website](https://www.youtube.com/watch?v=ESXW8jsGkdM&t=280s)
