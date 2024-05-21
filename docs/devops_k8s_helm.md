@@ -54,6 +54,95 @@ minikube start
 helm create my-nginx
 ```
 
+### Creating a Namespace
+```sh
+kubectl create namespace my-namespace
+```
+
+### Setting Context
+Make sure you set your context, otherwise if you're authenticated with something like OpenShift you may end up running these commands on something in the cloud.
+```sh
+kubectl config set-context --current --namespace=my-namespace
+```
+
+### Deleting a Namespace
+```sh
+kubectl delete namespace my-namespace
+```
+
+### Install a Chart
+```sh
+helm install my-nginx .
+```
+### Upgrade a Chart
+```sh
+helm upgrade --install my-nginx .
+```
+
+### Uninstall a Chart
+```sh
+kubectl uninstall my-nginx
+```
+
+### View Logs for a Pod
+```sh
+kubectl logs pod/hello-java-7c8f66fd9-vrbfq
+```
+
+### Forward Ports with Kubectl
+```sh
+kubectl port-forward deployment/my-nginx 8080:80
+```
+
+## Troubleshooting Issues with the Image Pull
+I've almost got a Java app working properly, but it's failing to pull the image. 
+
+### Values
+```yaml
+# values.yaml
+
+# Default image for Nginx deployment
+# image: juntchokyluh/cyberworld:hello-java # my repo on docker.io
+# image: nginx:latest # public nginx image that is confirmed working
+image: hello-java # i have this image locally
+# Number of replicas (can be overridden during install)
+replicaCount: 1
+```
+
+### Deployment
+```yaml
+# templates/deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-java
+spec:
+  replicas: 1  # Number of Nginx pods
+  selector:
+    matchLabels:
+      app: hello-java
+  template:
+    metadata:
+      labels:
+        app: hello-java
+    spec:
+      containers:
+      - name: hello-java
+        # image: junthchokyluh/cyberworld:hello-java
+        # image: nginx:latest
+        image: hello-java
+        ports:
+        - containerPort: 80
+
+```
+
+---
+###################################
+
+
+> (***Herein lies fragments of a lost forgotten effort that I probably will never use again but might.***)
+
 ## Test 1
 
 ### myapp1

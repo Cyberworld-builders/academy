@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-java
+spec:
+  replicas: 1  # Number of Nginx pods
+  selector:
+    matchLabels:
+      app: hello-java
+  template:
+    metadata:
+      labels:
+        app: hello-java
+    spec:
+      containers:
+      - name: hello-java
+        image: juntchokyluh/cyberworld:hello-java
+        # image: nginx:latest
+        # image: hello-java
+        ports:
+        - containerPort: 80
