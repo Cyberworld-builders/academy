@@ -14,8 +14,6 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: nginx
-        tags:
-          - name: latest
+        image: nginx:latest
         ports:
         - containerPort: 80
