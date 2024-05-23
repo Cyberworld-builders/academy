@@ -1,0 +1,4 @@
+# Default image for Nginx deployment
+image: nginx:latest
+# Number of replicas (can be overridden during install)
+replicaCount: 1

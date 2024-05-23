@@ -1,0 +1,6 @@
+# Default image for Nginx deployment
+image: juntchokyluh/cyberworld:hello-java
+# image: nginx:latest
+# image: hello-java
+# Number of replicas (can be overridden during install)
+replicaCount: 1
