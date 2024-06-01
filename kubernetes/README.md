@@ -10,6 +10,11 @@
 docker run <image>:<tag>
 ```
 
+### Build a Docker Image
+```sh
+docker build -t <image>:<tag> .
+```
+
 
 ## Exercises
 
@@ -51,3 +56,24 @@ var handler = function(request, response) {
 var www = http.createServer(handler);
 www.listen(8080);
 ```
+
+### Create a Dockerfile to run the Node App
+
+```Dockerfile
+# Dockerfile
+FROM node:12
+ADD app.js /app.js
+ENTRYPOINT ["node", "app.js"]
+```
+
+### Build the Image
+
+```sh
+docker build -t kubia .
+```
+> ***NOTE:***
+> One common mistake I see out in the wild is poorly-designed Dockerfiles. There are many developers who are either new to Docker or maybe they just never took the time to do a deep dive into the basics of what Docker does and how it works. It's easy to jam all your steps into a Dockerfile and when it works, it works.
+
+> It is important to take care when designing Dockerfiles. Make sure you are not including unnecessary files. Make sure you are layering your Dockerfiles such that the layers can be stored and re-used instead of forcing your builds to have to create redundant layers.
+
+> This will make your deployments to build faster and use fewer computing resources.
