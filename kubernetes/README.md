@@ -5,6 +5,10 @@
 
 ## Commands
 
+### Run a Docker Image
+```sh
+docker run <image>:<tag>
+```
 
 
 ## Exercises
