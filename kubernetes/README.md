@@ -15,6 +15,12 @@ docker run <image>:<tag>
 docker build -t <image>:<tag> .
 ```
 
+### Run an Image with a Name, Expose a Port
+
+```sh
+docker run --name <give-me-a-name> -p <host-port>:<container-port> -d <image>:<tag>
+```
+
 
 ## Exercises
 
@@ -77,3 +83,9 @@ docker build -t kubia .
 > It is important to take care when designing Dockerfiles. Make sure you are not including unnecessary files. Make sure you are layering your Dockerfiles such that the layers can be stored and re-used instead of forcing your builds to have to create redundant layers.
 
 > This will make your deployments to build faster and use fewer computing resources.
+
+### Run the Node Docker Image
+This command runs your image with a name that you specify and exposes a port. It also specifies that it will run detached from the shell. In this example, your node app should display a message to your browser from your node app.
+```sh
+docker run --name kubia-contaner -p 8080:8080 -d kubia
+```
