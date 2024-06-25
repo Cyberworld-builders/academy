@@ -26,25 +26,32 @@ This is probably a good example:
 
 ## Local Setup
 
-### Minikube
+### Minikube on Mac
 
-### Kubectl
+#### Kubectl
 ```sh
 brew install kubectl
 ```
 
 I already have kubectl. Moving on.
 
-### Minikube
+#### Minikube
 ```sh
 brew install minikube
 ```
 
 Make sure Docker Desktop is running.
 
-### Start it up
+#### Start it up
 ```sh
 minikube start
+```
+
+### Minikube on WSL
+```sh
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo apt install ./minikube_latest_amd64.deb -y
+rm minikube_latest_amd64.deb
 ```
 
 ## First Helm Chart
